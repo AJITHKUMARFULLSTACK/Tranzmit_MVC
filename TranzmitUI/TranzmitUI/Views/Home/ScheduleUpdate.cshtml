@@ -1,0 +1,193 @@
+﻿@model TranzmitUI.Models.ScheduleMaster
+
+<html>
+<head>
+    <title>SCHEDULE</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui-timepicker-addon.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="pageContainer">
+        <div class="insertPageTitle">UpdateSchedule</div>
+
+
+    </div>
+    <hr />
+
+    @section Scripts {
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script src="~/Scripts/jquery-ui-timepicker-addon.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('#DeployDate').datepicker({
+                    dateFormat: "dd/mm/yy",
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-60:+0"
+                });
+                $('#ScheduleDate').datepicker({
+                    dateFormat: "dd/mm/yy",
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-60:+0"
+                });
+                $(document).ready(function () {
+                    $('#ScheduleTime').timepicker({
+                        timeFormat: 'HH:mm:ss',
+                        use24hours: true
+                    });
+                });
+                $(document).ready(function () {
+                    $('#DeployTime').timepicker({
+                        timeFormat: 'HH:mm:ss',
+                        use24hours: true
+                    });
+                });
+            });
+        </script>
+
+
+    }
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="column" style="height:100%; width:100%;">
+                <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+
+                    <tr>
+                        <td class="lblsec">ScheduleType</td>
+                        <td></td>
+                        <td>
+                            @Html.RadioButtonFor(model => model.ScheduleType, "IMMEDIATE", false) IMMEDIATE
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            @Html.RadioButtonFor(model => model.ScheduleType, "SCHEDULE", new { @style = "width:auto;background:blue;border:none" }) SCHEDULE
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="lblsec">@*@Html.LabelFor(model => model.CityId)*@FileName</td>
+                        <td></td>
+                        <td>
+                            @Html.DropDownListFor(model => model.RepCode,
+                        ViewBag.Repos as List<SelectListItem>, new { @class = "ddlsize" })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.RepCode)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lblsec">@*@Html.LabelFor(model => model.CityId)*@Directory </td>
+                        <td></td>
+                        <td>
+                            @Html.DropDownListFor(model => model.DirCode,
+                           ViewBag.Direct as List<SelectListItem>, new { @class = "ddlsize" })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.DirCode)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lblsec">@*@Html.LabelFor(model => model.CityId)*@DeviceIP</td>
+                        <td></td>
+                        <td>
+                            @Html.DropDownListFor(model => model.ObjID,
+                        ViewBag.Device as List<SelectListItem>, new { @class = "ddlsize" })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.ObjID)
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="lblsec">ScheduleDate</td>
+                        <td></td>
+                        <td>
+                            @Html.TextBoxFor(model => model.ScheduleDate, new { @class = "inputstyle" })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.ScheduleDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lblsec">ScheduleTime</td>
+                        <td></td>
+                        <td>
+                            @Html.TextBoxFor(model => model.ScheduleTime, new { @class = "inputstyle" })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.ScheduleTime)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td style="padding-top:100px;" valign="bottom">
+                            <div style="width:300px;">
+                                <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                    UPDATE
+                                </button>
+                                <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/ScheduleList">
+
+                                    CANCEL
+
+                                </a>
+                            </div>
+
+
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+
+
+    }
+
+    <script type="text/javascript">
+
+        $("#dvGroup").hide();
+        $("#dvDevice").hide();
+
+        $("input[name='ProfileType']").on("change", function () {
+
+            if ($(this).val() == "GROUP") {
+                $("#dvGroup").show();
+                $("#dvDevice").hide();
+
+            }
+            if ($(this).val() == "INDEPENDENT") {
+                $("#dvGroup").hide();
+                $("#dvDevice").show();
+            }
+        });
+
+
+
+        $("#dvschedule").hide();
+        $("#dvimmediate").hide();
+        $("input[name='Schedule']").on("change", function () {
+            if ($(this).val() == "SCHEDULE") {
+                $("#dvschedule").show();
+                $("#dvimmediate").hide();
+            }
+            if ($(this).val() == "IMMEDIATE") {
+                $("#dvimmediate").show();
+                $("#dvschedule").hide();
+            }
+        });
+
+    </script>
+    <style>
+        td {
+            white-space: nowrap !important;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,75 @@
+﻿
+
+@model IEnumerable<TranzmitUI.Models.DeviceMaster>
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>DEVICE</title>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/gridmvc.js"></script>
+        <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div style="margin-top:30px">
+            <input id="myInput" type="text" placeholder="Search By Name.." style="margin-left:800px;border:groove;">
+        </div>
+        <div id="location">
+            <table class="table" style="width:auto;margin-left:350px;margin-top:30px;font-size:15px;" cellpadding="2" cellspacing="2">
+                <tr>
+                    <th>DEVICE IP</th>
+                    <th>DEVICE PORT</th>
+                    <th>DEVICE MAKE</th>
+                    <th>LOCATION</th>
+                    <th>GROUP</th>
+                    <th> </th>
+                </tr>
+                <tbody id="myTable">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DeviceIP)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DevicePort)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DeviceMake)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LocationID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GroupID)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Update", "UpdateDevice", new { id = item.DeviceID })|
+                                @Html.ActionLink("Delete", "DeleteDevice", new { id = item.DeviceID }, new { onclick = "return confirm('Are sure wants to delete?');" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="btn btn-block" style="margin-left:550px">
+            @Html.ActionLink("ADD", "DeviceDirect", "HomeController", new { @class = "btn btn-secondary btn-block" })
+        </div>
+        <script>
+
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

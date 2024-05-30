@@ -1,0 +1,71 @@
+﻿@model TranzmitUI.Models.UserMaster
+
+<html>
+<head>
+    <title>USER</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+</head>
+<body>
+    <center><h3>UpdateUser</h3></center>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="column" style="padding:23px 5px 5px 150px;">
+            <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+
+                <tr>
+                    <td style="padding:0 15px 0 15px;">USERNAME</td>
+                    <td style="border:groove;">@Html.TextBoxFor(model => model.UserName)</td>
+                </tr>
+                <tr>
+                    <td style="padding:0 15px 0 15px;">GROUP</td>
+                    <td>@Html.DropDownListFor(model => model.GroupName, 
+                       ViewBag.Group as List<SelectListItem>)</td>
+                </tr>
+                <tr>
+                    <td style="padding:0 15px 0 15px;">CITY</td>
+                    <td>@Html.DropDownListFor(model => model.CityName,
+                        ViewBag.City as List<SelectListItem>)</td>
+                </tr>
+                <tr>
+                    <td style="padding:0 15px 0 15px;">STATE</td>
+                    <td>@Html.DropDownListFor(model => model.StateName,
+                        ViewBag.State as List<SelectListItem>)</td>
+                </tr>
+            </table>
+        </div>
+        <div class="column" style="padding:23px 5px 5px 150px;">
+            <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+
+
+                <tr>
+                    <td style="padding:0 15px 0 15px;">COUNTRY</td>
+                    <td>@Html.DropDownListFor(model => model.CountryName,
+                    ViewBag.Country as List<SelectListItem>)</td>
+            </tr>
+            <tr>
+                <td style="padding:0 15px 0 15px;">EMP ID</td>
+                <td style="border:groove;">@Html.TextBoxFor(model => model.EmpID)</td>
+            </tr>
+            <tr>
+                <td style="padding:0 15px 0 15px;">MOBILE</td>
+                <td style="border:groove;">@Html.TextBoxFor(model => model.Mobile)</td>
+            </tr>
+            <tr>
+                <td style="padding:0 15px 0 15px;">EMAIL</td>
+                <td style="border:groove;">@Html.TextBoxFor(model => model.Email)</td>
+            </tr>
+            </table>
+        </div>
+    </div>
+        <div class="container-login100-form-btn" style="margin-left:600px;padding-bottom:100px;">
+            <button class="login100-form-btn">
+                UPDATE
+            </button>
+        </div>
+    }
+</body>
+</html>

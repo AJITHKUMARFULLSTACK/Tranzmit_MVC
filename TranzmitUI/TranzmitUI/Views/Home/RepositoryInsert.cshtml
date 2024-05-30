@@ -1,0 +1,155 @@
+﻿@model TranzmitUI.Models.RepositoryMaster
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>REPOSITORY</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script src="~/Content/jquery.1.8.3.min.js"></script>
+        <link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+        <script src="~/Content/bootstrap-multiselect.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </head>
+    <body>
+        <div class="pageContainer">
+            <div class="insertPageTitle"> Create Repository</div>
+            @*<div>
+                <button class="scheduleButton" style="margin-right:5px" onclick="wrong_pass_alert()">
+                    SAVE
+                </button>
+                <a class="cancelRedirectButton" style="" href="/Home/RepositoryList">
+
+                    CANCEL
+
+                </a>
+            </div>*@
+
+        </div>
+        <hr />
+
+        @using (Html.BeginForm(Html.BeginForm("RepositoryInsert", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="column"  style="height:100%; width:100%;">
+                    <table style="margin:0 40%">
+                        <tr>
+                            <td style="padding:0 15px 0 15px;float:right;">@Html.RadioButtonFor(model => model.File, "File", true) File </td>
+                            <td style="padding:0 15px 0 15px;">@Html.RadioButtonFor(model => model.File, "Directory", false) Directory </td>
+                        </tr>
+                    </table>
+                    <div id="dvfile" style="display:none">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 30%;">
+
+                            <tr>
+                                <td class="lblsec">Version</td>
+                                <td ></td>
+                                <td >
+                                    @Html.TextBoxFor(model => model.RepVersion, new { @class = "inputstyle" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.RepVersion)
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  class="lblsec">Repositorypath</td>
+                                <td ></td>
+                                <td >
+                                    @Html.DropDownListFor(model => model.RepPath, Model.PathSelect, "Please Select", new { @class = "ddlsize", @style = "width:400px;" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.RepPath)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  class="lblsec">Filename</td>
+                                <td ></td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple" })
+                                    @*@Html.TextBoxFor(model => model.files, "", new { @class = "inputstyle" })*@
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.files)
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td style="padding-top:100px;" valign="bottom">
+                                    <div style="width:300px;">
+                                        <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                            Add
+                                        </button>
+                                        <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/RepositoryList">
+
+                                            Cancel
+
+                                        </a>
+                                    </div>
+
+
+                                   
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="dvdire" style="display: none">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color:black;margin:0 30%;">
+
+                            <tr>
+                                <td class="lblsec">Destination</td>
+                                <td></td>
+                                <td>
+
+
+                                    @Html.TextBoxFor(model => model.DestinationPath, new { @class = "bigsizetxtEmpty" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.DestinationPath)
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td style="padding-top:100px;" valign="bottom">
+                                    <div style="width:300px;">
+                                        <button style="float:left;margin-right:5px"class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                            Add
+                                        </button>
+                                        <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/RepositoryList">
+
+                                            Cancel
+
+                                        </a>
+                                    </div>
+
+
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        }
+        <script>
+            $("#dvfile").hide();
+            $("#dvdire").hide();
+            $("input[name='File']").on("change", function () {
+                if ($(this).val() == "File") {
+                    $("#dvfile").show();
+                    $("#dvdire").hide();
+                }
+                if ($(this).val() == "Directory") {
+                    $("#dvdire").show();
+                    $("#dvfile").hide();
+                }
+            });
+            $(function () {
+                $(".multiselect").multiselect();
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,164 @@
+﻿@model IEnumerable<TranzmitUI.Models.DeviceTransmission>
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>Download</title>
+
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/gridmvc.js"></script>
+        @*<script src="~/Scripts/jquery-1.9.1.min.js"></script>*@
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script src="~/Content/jquery1.10.1.min.js"></script>
+        @*<link href="~/Content/jquery-ui-1.12.1.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script src="~/Scripts/jquery-3.6.0.min.js"></script>*@
+    </head>
+    <body>
+        <div>
+            @if (ViewBag.Download != null)
+            {
+                <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.Download");
+                         };
+                </script>
+            }
+
+
+            @if (ViewBag.FileExists != null)
+            {
+                <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.FileExists");
+                         };
+                </script>
+            }
+        </div>
+       
+        <div>
+            <div class="row" style="width: 100%; align-content: center;">
+                <div style="width:5%;float:left;"></div>
+                <div class="column" style="width:100%;float:left;">
+                    <div style="width:50%; float:right;">
+                        <input id="myInput" type="text" class="inputstyle" placeholder="search" style="float:right;border:groove;">
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="pageContainer">
+                        <div >
+                            <a href="~/Home/EJFileDownload" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+
+                                History
+                            </a>
+                        </div>
+
+
+                    </div>
+                   
+
+                    <div style="clear:both;"></div>
+                    <div style="width:100%;">
+                        <div id="location">
+
+                            <table class="table @(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "sessiontableheader" : "tableheader")" style="width:100%;font-size:15px;" cellpadding="2" cellspacing="2">
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Bank Name</th>
+                                    <th>ATM ID</th>
+                                    <th>IP</th>
+                                    <th>Port</th>
+                                    <th>Date</th>
+                                    <th>Filename</th>
+                                    <th>FilePath</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                                <tbody id="myTable">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SNo)
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Bankname)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ATMID)
+                                            </td>
+                                            <td >
+                                                @Html.DisplayFor(modelItem => item.ATMIP)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ATMPORT)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EJDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FileName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EJFilePath)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EJStatus)
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Download", "Home",new { id = item.SNo })" title="Download">
+                                                    <img alt="Download" style="width:22px;height:22px;" src="@Url.Content("~/images/download.png")">
+                                                    @*<span class="ui-icon ui-icon-arrowthick-1-s"></span>*@
+
+                                                </a>
+                                                @*<a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "session-btn-reschedule" : "btn-reschedule")" style=" width:100px;text-align:center;" href="@Url.Action("Download", "Home",new { id = item.SNo })">Download</a>*@
+
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        @*<div style="width:100%;">
+                <div style="width:40%;float:left;">&nbsp;</div>
+                <div class="btn btn-block" style="width:20%;float:left;margin-bottom:20px;margin-top:40px;">
+                    @Html.ActionLink("Export Excel", "DashboardDirect", "HomeController", new { @class = "login100-form-btn", @style = "width:150px;text-align:center;" })
+                </div>
+                <div style="width:40%;float:left;">&nbsp;</div>
+            </div>*@
+
+                    </div>
+
+                </div>
+                <div style="width:5%;float:left;"></div>
+                <div style="clear:both;"></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <style>
+            table th {
+                font-size: 13px;
+            }
+
+            table td {
+                font-size: 11px;
+            }
+        </style>
+        <script>
+
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

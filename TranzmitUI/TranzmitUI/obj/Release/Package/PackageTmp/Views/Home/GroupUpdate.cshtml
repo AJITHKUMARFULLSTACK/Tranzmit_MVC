@@ -1,0 +1,649 @@
+﻿@model TranzmitUI.Models.GroupMaster
+
+   
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>GROUP</title>
+
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script src="~/Content/jquery.1.8.3.min.js"></script>
+        <link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+        <script src="~/Content/bootstrap-multiselect.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                var GroupProfile = @Html.Raw(Json.Encode(ViewBag.GroupProfile));
+               
+                if (GroupProfile === "D") {
+                   $("#dvDeviceProfile").show();
+                    $("#dvLocationProfile").hide();
+
+                }
+                if (GroupProfile === "L") {
+                   
+
+                    $("#dvLocationProfile").show();
+                    $("#dvDeviceProfile").hide();
+                }
+            });
+
+
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                var options = @Html.Raw(Json.Encode(ViewBag.DeviceList));
+                  var multiselect = $('#GroupDeviceID');
+
+                    $.each(options, function (index, option) {
+                        multiselect.append($('<option>', {
+                            value: option.value,
+                            text: option.text
+                        }));
+                    });
+
+                    // Selected values received from backend
+                   var selectedValuesDevice = @Html.Raw(Json.Encode(ViewBag.DeviceSelectedListvalue));
+
+                    // Select the appropriate values
+                    multiselect.val(selectedValuesDevice);
+
+                    // Initialize Chosen plugin and update
+                    multiselect.chosen();
+                    multiselect.trigger('chosen:updated');
+
+
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                var options = @Html.Raw(Json.Encode(ViewBag.CountryList));
+                var multiselect = $('#GroupCountry');
+
+                    $.each(options, function (index, option) {
+                        multiselect.append($('<option>', {
+                            value: option.value,
+                            text: option.text
+                        }));
+                    });
+
+
+                    // Selected values received from backend
+                   var selectedValues = @Html.Raw(Json.Encode(ViewBag.CountrySelectedListvalue));
+
+                    // Select the appropriate values
+                multiselect.val(selectedValues);
+
+                    // Initialize Chosen plugin and update
+                    multiselect.chosen();
+                    multiselect.trigger('chosen:updated');
+
+
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                var options = @Html.Raw(Json.Encode(ViewBag.StateList));
+                var multiselect = $('#GroupState');
+
+                    $.each(options, function (index, option) {
+                        multiselect.append($('<option>', {
+                            value: option.value,
+                            text: option.text
+                        }));
+                    });
+
+
+                    // Selected values received from backend
+                   var selectedValues = @Html.Raw(Json.Encode(ViewBag.StateSelectedListvalue));
+
+                    // Select the appropriate values
+                multiselect.val(selectedValues);
+
+                    // Initialize Chosen plugin and update
+                    multiselect.chosen();
+                    multiselect.trigger('chosen:updated');
+
+
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                var options = @Html.Raw(Json.Encode(ViewBag.CityList));
+                var multiselect = $('#GroupCity');
+
+                    $.each(options, function (index, option) {
+                        multiselect.append($('<option>', {
+                            value: option.value,
+                            text: option.text
+                        }));
+                    });
+
+
+
+                    // Selected values received from backend
+                   var selectedValues = @Html.Raw(Json.Encode(ViewBag.CitySelectedListvalue));
+
+                    // Select the appropriate values
+                   multiselect.val(selectedValues);
+
+                    // Initialize Chosen plugin and update
+                    multiselect.chosen();
+                    multiselect.trigger('chosen:updated');
+
+
+            });
+        </script>
+
+
+        <script>
+            $(document).ready(function () {
+                var options = @Html.Raw(Json.Encode(ViewBag.LocationList));
+                  var multiselect = $('#GroupLocation');
+
+                    $.each(options, function (index, option) {
+                        multiselect.append($('<option>', {
+                            value: option.value,
+                            text: option.text
+                        }));
+                    });
+
+                    // Selected values received from backend
+                   var selectedValuesDevice = @Html.Raw(Json.Encode(ViewBag.LocationSelectedListvalue));
+
+                    // Select the appropriate values
+                    multiselect.val(selectedValuesDevice);
+
+                    // Initialize Chosen plugin and update
+                    multiselect.chosen();
+                    multiselect.trigger('chosen:updated');
+
+
+            });
+        </script>
+
+
+
+
+    </head>
+    <body style="overflow-x:hidden;">
+        <div class="pageContainer">
+            <div class="insertPageTitle">UpdateGroup</div>
+            @*<div>
+                <button class="scheduleButton" style="margin-right:5px" onclick="wrong_pass_alert()">
+                    SAVE
+                </button>
+                <a class="cancelRedirectButton" style="" href="/Home/DeviceList">
+
+                    CANCEL
+
+                </a>
+            </div>*@
+
+        </div>
+        <hr />
+
+        <div>
+            @if (ViewBag.GroupUpdateFail != null)
+            {
+
+                <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.GroupUpdateFail");
+                        };
+                </script>
+            }
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="column" style="height:100%; width:100%;">
+                    <div id="dvDeviceProfile">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+
+                            <tr>
+                                <td class="lblsec">Groupselection</td>
+                                <td></td>
+                                <td>
+                                    @*@Html.DropDownListFor(model => model.GroupProfileSelection, new List<SelectListItem> { new SelectListItem { Text = "Location", Value = "L" }, new SelectListItem { Text = "Device", Value = "D" } }, "Please Select", new { @class = "ddlsize", onchange = " groupprofileselection() " })*@
+                                    @Html.RadioButtonFor(model => model.GroupProfileSelection, "D") Device
+
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.GroupProfileSelection)
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div id="dvLocationProfile">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+
+                            <tr>
+                                <td class="lblsec">Groupselection</td>
+                                <td></td>
+                                <td>
+                                    @Html.RadioButtonFor(model => model.GroupProfileSelection, "L") Location
+
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.GroupProfileSelection)
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+
+                       
+                        <tr>
+                            <td class="lblsec">Groupname</td>
+                            <td></td>
+                            <td>
+                                @Html.TextBoxFor(model => model.GroupName, new { @class = "inputstyle" })
+                                <br />
+                                @Html.ValidationMessageFor(model => model.GroupName)
+                            </td>
+                        </tr>
+
+                    </table>
+                    <div id="dvDevice" style="display:block">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+                            @if (ViewBag.DeviceList != null)
+                            {
+                                <tr>
+
+                                    <td class="lblsec">Groupdevice</td>
+                                    <td></td>
+                                    <td>
+
+                                        @*@Html.DropDownListFor(model => model.GroupDeviceID, new SelectList((List<SelectListItem>)Model.GroupSelect, "Value", "Text"), "Please select", new { @class = "ddlsize chosen-device" })*@
+                                        @Html.DropDownListFor(model => model.GroupDeviceID, ViewBag.DeviceList as List<SelectListItem>, "Please select", new { @class = "ddlsize chosen-device", multiple = "multiple" })
+                                        @Html.ValidationMessageFor(model => model.GroupDeviceID)
+
+                                    </td>
+
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                    <div id="dvCountry">
+
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+                            @if (ViewBag.CountryList != null)
+                            {
+                                <tr>
+                                    <td class="lblsec">Country</td>
+                                    <td></td>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.GroupCountry, ViewBag.CountryList as List<SelectListItem>, "Please select", new { @class = "ddlsize chosen-device" })
+
+
+
+                                        @Html.ValidationMessageFor(model => model.GroupCountry)
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </table>
+
+                    </div>
+
+                    <div id="dvState">
+
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+                            @if (ViewBag.StateList != null)
+                            {
+                                <tr>
+
+                                    <td class="lblsec">State</td>
+                                    <td></td>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.GroupState, ViewBag.StateList as List<SelectListItem>, "Please select", new
+                                   {
+                                       @class = "ddlsize chosen-device",
+
+                                   })
+
+
+                                        @Html.ValidationMessageFor(model => model.GroupState)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+
+                    <div id="dvCity">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+                            @if (ViewBag.CityList != null)
+                            {
+                                <tr>
+                                    <td class="lblsec">City</td>
+                                    <td></td>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.GroupCity, ViewBag.CityList as List<SelectListItem>, "Please select", new { @class = "ddlsize chosen-device" })
+
+
+                                        @Html.ValidationMessageFor(model => model.GroupCity)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                    <div id="dvLocation">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+                            @if (ViewBag.LocationList != null)
+                            {
+                                <tr>
+
+                                    <td class="lblsec">Location</td>
+                                    <td></td>
+                                    <td>
+                                        @*@Html.DropDownListFor(model => model.GroupLocation, new SelectList((List<SelectListItem>)ViewBag.LocationList, "Value", "Text"), "Please select", new { @class = "ddlsize chosen-device", multiple = "multiple" })*@
+                                        @Html.DropDownListFor(model => model.GroupLocation, ViewBag.LocationList as List<SelectListItem>, "Please select", new { @class = "ddlsize chosen-device", multiple = "multiple" })
+                                        <br />
+                                        @Html.ValidationMessageFor(model => model.GroupLocation)
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+
+
+
+                    @*<tr>
+            <td></td>
+            <td></td>
+            <td style="padding-top:100px;" valign="bottom">
+                <div style="width:300px;">
+                    <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                        ADD
+                    </button>
+                    <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/GroupList">
+
+                        CANCEL
+
+                    </a>
+                </div>
+
+
+
+            </td>
+        </tr>*@
+
+
+                </div>
+            </div>
+            <div class="container-login100-form-btn"  style="padding-top:10px;margin:0 35%;position:relative;">
+                <button class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                    Update
+                </button>
+                &nbsp;&nbsp;
+                <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" style="float:left;" href="/Home/GroupList">
+
+                    Cancel
+
+                </a>
+            </div>
+
+
+
+        }
+        <script>
+
+            $(document).ready(function () {
+
+
+                $(".chosen-device").chosen();
+
+            });
+
+        </script>
+
+        <script>
+            // Function to validate the dropdown
+            function validateChosenDevice() {
+                // Check if at least one option is selected
+                var GroupNameValue = $('#GroupNameValue').val();
+                var GroupCountry = $('#GroupCountry').val();
+                var GroupState = $('#GroupCountry').val();
+                var GroupCity = $('#GroupCountry').val();
+
+
+                if (GroupNameValue.trim() !== "" && ($("input[name='GroupProfileSelection']:checked").val() == "D")) {
+                    if ($('#multiselectdevice :selected').length < 1) {
+                        alert('Please select at least one device.');
+                        return false; // Validation failed
+                    }
+                    return true;
+                }
+                if (GroupNameValue.trim() !== "" && ($("input[name='GroupProfileSelection']:checked").val() == "L") && GroupCountry !== "" &&
+                    GroupState !== "" && GroupCity !== "") {
+
+
+                    if ($('#GroupLocation :selected').length < 1) {
+                        alert('Please select at least one location.');
+                        return false; // Validation failed
+                    }
+                    return true;
+                }
+                return true;
+                // Validation passed
+            }
+
+            function validateDropdown(dropdownId) {
+                var selectedValue = $('#' + dropdownId).val();
+                if (!selectedValue || selectedValue === "") {
+                    return false; // Validation failed
+                }
+                return true; // Validation passed
+            }
+
+            // Example of how to use validation on form submission
+            $('#submit-btn').click(function (event) {
+                if ($('#GroupNameValue').val() !== "" && ($("input[name='GroupProfileSelection']:checked").val() == "L")) {
+
+
+                    // Validate Country dropdown
+                    if (!validateDropdown('GroupCountry')) {
+                        alert('Please select a country.');
+                        event.preventDefault(); // Prevent form submission if validation fails
+                        return;
+                    }
+
+                    // Validate State dropdown
+                    if (!validateDropdown('GroupState')) {
+                        alert('Please select a state.');
+                        event.preventDefault(); // Prevent form submission if validation fails
+                        return;
+                    }
+
+                    // Validate City dropdown
+                    if (!validateDropdown('GroupCity')) {
+                        alert('Please select a city.');
+                        event.preventDefault(); // Prevent form submission if validation fails
+                        return;
+                    }
+                    if (!validateChosenDevice()) {
+                        event.preventDefault(); // Prevent form submission if validation fails
+                    }
+                }
+
+            });
+        </script>
+
+
+        <script>
+
+            $("input[name='GroupProfileSelection']").on("change", function () {
+
+                if ($(this).val() == "D") {
+                    alert("D");
+                    $("#GroupName").val("");
+                    $("#dvDevice").show();
+                    $("#dvCountry").hide();
+                    $("#dvState").hide();
+                    $("#dvCity").hide();
+                    $("#dvLocation").hide();
+                }
+                if ($(this).val() == "L") {
+                    $("#GroupName").val("");
+                    $("#dvDevice").hide();
+                    $("#dvCountry").show();
+                    $("#dvState").hide();
+                    $("#dvCity").hide();
+                    $("#dvLocation").hide();
+                }
+            });
+        </script>
+       
+       
+        <script>
+            $(document).ready(function () {
+                $('#GroupCountry').chosen().change(function () {
+
+                    var selectedValue = $(this).val();
+
+
+
+                    // Make an AJAX request to fetch data for the second dropdown
+                    $.ajax({
+
+                        url: '@Url.Action("GroupState","Home")',
+                        method: 'GET',
+                        data: { selectedValue: selectedValue },
+                        success: function (data) {
+
+                            console.log('statedata', data);
+                            var stateContainer = $('#dvState');
+                            var stateDropdown = $('#GroupState', stateContainer);
+                            stateDropdown.empty();
+                            stateDropdown.append($('<option>', {
+                                value:'',
+                                text: 'Please select'
+                            }));
+                            $.each(data, function (index, item) {
+                                stateDropdown.append($('<option>', {
+                                    value: item.Value,
+                                    text: item.Text
+                                }));
+
+                            });
+                            stateContainer.show();
+                            stateDropdown.chosen().trigger("chosen:updated", { disable_search: true });
+                        },
+                        error: function (xhr,status,error) {
+                            console.log('Error loading data for dropdown.',xhr.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('#GroupState').chosen().change(function () {
+
+                    var selectedValue = $(this).val();
+
+
+
+                    // Make an AJAX request to fetch data for the second dropdown
+                    $.ajax({
+
+                        url: '@Url.Action("GroupCity","Home")',
+                        method: 'GET',
+                        data: { selectedValue: selectedValue },
+                        success: function (data) {
+
+
+                            var cityContainer = $('#dvCity');
+                            var cityDropdown = $('#GroupCity', cityContainer);
+                            cityDropdown.empty();
+                            cityDropdown.append($('<option>', {
+                                value:'',
+                                text: 'Please select'
+                            }));
+                            $.each(data, function (index, item) {
+                                cityDropdown.append($('<option>', {
+                                    value: item.Value,
+                                    text: item.Text
+                                }));
+
+                            });
+                            cityContainer.show();
+                            cityDropdown.chosen().trigger("chosen:updated", {disable_search : true});
+                        },
+                        error: function (xhr,status,error) {
+                            console.log('Error loading data for dropdown.',xhr.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $('#GroupCity').chosen().change(function () {
+
+                    var selectedValue = $(this).val();
+
+
+
+                    // Make an AJAX request to fetch data for the second dropdown
+                    $.ajax({
+
+                        url: '@Url.Action("GroupLocation", "Home")',
+                        method: 'GET',
+                        data: { selectedValue: selectedValue },
+                        success: function (data) {
+
+
+                            var locationContainer = $('#dvLocation');
+                            var locationDropdown = $('#GroupLocation', locationContainer);
+                            locationDropdown.empty();
+                            locationDropdown.append($('<option>', {
+                                value: '',
+                                text: 'Please select'
+                            }));
+
+                            $.each(data, function (index, item) {
+                                locationDropdown.append($('<option>', {
+                                    value: item.Value,
+                                    text: item.Text
+                                }));
+
+                            });
+                            locationContainer.show();
+                            locationDropdown.chosen().trigger("chosen:updated", { disable_search: true });
+                        },
+                        error: function (xhr,status,error) {
+                            console.log('Error loading data for dropdown.',xhr.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+
+
+
+        @section styles{
+
+            @Styles.Render("~/Content/chosen");
+
+
+        }
+
+
+
+    </body>
+        </html>

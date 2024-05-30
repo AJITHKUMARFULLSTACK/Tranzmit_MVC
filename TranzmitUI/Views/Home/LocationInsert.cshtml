@@ -1,0 +1,132 @@
+﻿@model TranzmitUI.Models.LocationMaster
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+        <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div style="height:50px;background-color:white;color:black;">
+            <center><h3>LOCATION INSERT</h3></center>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="column" style="padding:23px 5px 5px 150px">
+                    <table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(model => model.Branch, "Location", true) Location </td>
+                            <td>@Html.RadioButtonFor(model => model.Branch, "City", false) City </td>
+                            <td>@Html.RadioButtonFor(model => model.Branch, "State", false) State </td>
+                            <td>@Html.RadioButtonFor(model => model.Branch, "Country", false) Country </td>
+                        </tr>
+                    </table>
+                    <div id="dvloc" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>@Html.LabelFor(model => model.LocationName)</td>
+                                <td>@Html.TextBoxFor(model => model.LocationName)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.CityName)</td>
+                                <td>@Html.DropDownList("DDLTest", (List<SelectListItem>)ViewBag.ddlitemlist, new { multiple = "multiple", @class = "multiselect" })</td>
+                            </tr>
+                        </table>
+                        <div class="container-login100-form-btn" style="margin-left:600px;padding-bottom:100px;">
+                            <button class="login100-form-btn">
+                                ADD
+                            </button>
+                        </div>
+                    </div>
+                    <div id="dvcit" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Cname)</td>
+                                <td>@Html.TextBoxFor(model => model.Cname)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.StateName)</td>
+                                <td>@Html.DropDownListFor(model => model.StateName, Model.StateSelect, "Please Select")</td>
+                            </tr>
+                        </table>
+                        <div class="container-login100-form-btn" style="margin-left:600px;padding-bottom:100px;">
+                            <button class="login100-form-btn">
+                                ADD
+                            </button>
+                        </div>
+                    </div>
+                    <div id="dvsta" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>@Html.LabelFor(model => model.sname)</td>
+                                <td>@Html.TextBoxFor(model => model.sname)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.CountryName)</td>
+                                <td>@Html.DropDownListFor(model => model.CountryName, Model.CountrySelect, "Please Select")</td>
+                            </tr>
+                        </table>
+                        <div class="container-login100-form-btn" style="margin-left:600px;padding-bottom:100px;">
+                            <button class="login100-form-btn">
+                                ADD
+                            </button>
+                        </div>
+                    </div>
+                    <div id="dvcoun" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Coname)</td>
+                                <td>@Html.TextBoxFor(model => model.Coname)</td>
+                            </tr>
+                        </table>
+                        <div class="container-login100-form-btn" style="margin-left:600px;padding-bottom:100px;">
+                            <button class="login100-form-btn">
+                                ADD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <script>
+            $("#dvloc").hide();
+            $("#dvcit").hide();
+            $("#dvsta").hide();
+            $("#dvcoun").hide();
+            $("input[name='Branch']").on("change", function () {
+                if ($(this).val() == "Location") {
+                    $("#dvloc").show();
+                    $("#dvcit").hide();
+                    $("#dvsta").hide();
+                    $("#dvcoun").hide();
+                }
+                if ($(this).val() == "City") {
+                    $("#dvcit").show();
+                    $("#dvloc").hide();
+                    $("#dvsta").hide();
+                    $("#dvcoun").hide();
+                }
+                if ($(this).val() == "State") {
+                    $("#dvsta").show();
+                    $("#dvloc").hide();
+                    $("#dvcit").hide();
+                    $("#dvcoun").hide();
+                }
+                if ($(this).val() == "Country") {
+                    $("#dvcoun").show();
+                    $("#dvloc").hide();
+                    $("#dvcit").hide();
+                    $("#dvsta").hide();
+                }
+            });
+            $(function () {
+                $(".multiselect").multiselect();
+            });
+        </script>
+    </body>
+</html>

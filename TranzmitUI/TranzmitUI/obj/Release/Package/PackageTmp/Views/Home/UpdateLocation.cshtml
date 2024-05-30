@@ -1,0 +1,89 @@
+﻿@model TranzmitUI.Models.Location
+<html>
+<head>
+    <title>LOCATION</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap-multiselect.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</head>
+<body style="overflow-x:hidden;">
+    <div class="pageContainer">
+        <div class="insertPageTitle">UpdateLocation</div>
+
+
+    </div>
+    <hr />
+    <div>
+        @if (ViewBag.LocationUpdateFail != null)
+        {
+        <script type="text/javascript">
+          
+            window.onload = function () {
+                debugger;
+         alert("@ViewBag.LocationUpdateFail");
+                         };
+        </script>
+        }
+
+
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="column" style="height:100%; width:100%;" >
+                    <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 30%;">
+
+                        <tr>
+                            <td class="lblsec">@*@Html.LabelFor(model => model.LocationName)*@Location</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.LocationName, new { @class = "inputstyle" })
+                                                        <br />
+                                                        @Html.ValidationMessageFor(model => model.LocationName)
+                                                    </td>
+                        </tr>
+                        <tr>
+                            <td class="lblsec">@*@Html.LabelFor(model => model.CityId)*@City</td>
+                            <td >
+                                @Html.DropDownListFor(model => model.CityId, ViewBag.LocationCity as List<SelectListItem>, new { @class = "ddlsize" })
+                                                        <br />
+                                                        @Html.ValidationMessageFor(model => model.CityId)
+                                                    </td>
+                        </tr>
+
+                        <tr>
+
+                            <td></td>
+                            <td style="padding-top:100px;" valign="bottom">
+                                <div style="width:300px;">
+                                    <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                        Update
+                                    </button>
+                                    <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/LocationList">
+
+                                        Cancel
+
+                                    </a>
+                                </div>
+
+
+
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+        </div>
+      
+    }
+    <script>
+        $(function () {
+            $(".multiselect").multiselect();
+        });
+    </script>
+</body>
+</html>

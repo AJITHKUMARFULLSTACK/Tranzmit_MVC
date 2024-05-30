@@ -1,0 +1,191 @@
+﻿@model TranzmitUI.Models.DeviceMaster
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>DEVICE</title>
+       
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script src="~/Content/jquery.1.8.3.min.js"></script>
+        <link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+        <script src="~/Content/bootstrap-multiselect.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    </head>
+    <body style="overflow-x:hidden;">
+        <div class="pageContainer">
+            <div class="insertPageTitle">Create Device</div>
+            @*<div>
+                <button class="scheduleButton" style="margin-right:5px" onclick="wrong_pass_alert()">
+                    SAVE
+                </button>
+                <a class="cancelRedirectButton" style="" href="/Home/DeviceList">
+
+                    CANCEL
+
+                </a>
+            </div>*@
+
+        </div>
+        <hr />
+       
+        <div>
+            @if (ViewBag.Fail != null)
+            {
+                <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.Fail");
+                        };
+                </script>
+            }
+        </div>
+        @*<div style="padding:10px;color:black;">
+            <center><h3>DEVICE INSERT</h3></center>
+        </div>*@
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="column" style="height:100%; width:100%;">
+                    <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+
+                        <tr>
+                            <td class="lblsec">DeviceIP</td>
+                            <td></td>
+                            <td>
+                                @Html.TextBoxFor(model => model.DeviceIP, new { @class = "inputstyle" })
+                                <br />
+                                @Html.ValidationMessageFor(model => model.DeviceIP)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lblsec">Deviceport</td>
+                            <td></td>
+                            <td>
+                                @Html.TextBoxFor(model => model.DevicePort, new { @class = "inputstyle" })
+                                <br />
+                                @Html.ValidationMessageFor(model => model.DevicePort)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lblsec">@*@Html.LabelFor(model => model.CityId)*@Devicemake</td>
+                            <td></td>
+                            <td>
+                                @Html.DropDownListFor(model => model.DeviceMake, new List<SelectListItem>{new SelectListItem{ Text="DEIBOLD"},
+               new SelectListItem{ Text="NCR" } }, "Please Select", new { @class = "ddlsize" })
+                                <br />
+                                @Html.ValidationMessageFor(model => model.DeviceMake)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="lblsec">@*@Html.LabelFor(model => model.CityId)*@Location</td>
+                            <td></td>
+                            <td>
+                                @Html.DropDownListFor(model => model.LocationName, Model.LocationSelect, "Please Select", new { @class = "ddlsize" })
+                                <br />
+                                @Html.ValidationMessageFor(model => model.LocationName)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="lblsec">Bandwidth</td>
+                            <td></td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Bandwidth, new { @class = "inputstyle", @readonly = "readonly" })
+                                <br />
+                                @Html.ValidationMessageFor(model => model.Bandwidth)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td style="padding-top:100px;" valign="bottom">
+                                <div style="width:300px;">
+                                    <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                        Add
+                                    </button>
+                                    <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/DeviceList">
+
+                                        Cancel
+
+                                    </a>
+                                </div>
+
+
+
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+
+            <!--<div class="row">
+        <div class="column" style="padding:15px 5px 5px 0px">
+            <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+
+                <tr>
+                    <td style="padding:0 15px 0 15px;">-->@*@Html.LabelFor(model => model.DeviceIP)*@
+                    <!--DEVICE IP</td>
+                    <td style="border:groove;">@Html.TextBoxFor(model => model.DeviceIP)</td>
+                </tr>
+                <tr>
+                    <td style="padding:0 15px 0 15px;">-->@*@Html.LabelFor(model => model.DevicePort)*@
+                    <!--DEVICE PORT</td>
+                    <td style="border:groove;">@Html.TextBoxFor(model => model.DevicePort)</td>
+                </tr>
+                <tr>
+                    <td style="padding:0 15px 0 15px;">-->@*@Html.LabelFor(model => model.DeviceMake)*@
+                    <!--DEVICE MAKE</td>
+                        <td>
+                            @Html.DropDownListFor(model => model.DeviceMake,
+                       new List<SelectListItem>{new SelectListItem{ Text="DEIBOLD"},
+                           new SelectListItem{ Text="NCR" } }, "Please Select")*
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:0 15px 0 15px;">-->@*@Html.LabelFor(model => model.LocationName)*@
+                    <!--LOCATION</td>
+                    <td>@Html.DropDownListFor(model => model.LocationName, Model.LocationSelect, "Please Select")</td>
+                </tr>
+                <tr>
+                    <td style="padding:0 15px 0 15px;">-->@*@Html.LabelFor(model => model.Bandwidth)*@
+                    <!--BANDWIDTH</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.Bandwidth, @TempData["bandwidth"])</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="container-login100-form-btn" style="margin-left:600px;padding-top:inherit">
+                        <button class="login100-form-btn">
+                            ADD
+                        </button>
+                    </div>
+                </div>-->
+                }
+        <script>
+            $("#dvexist").hide();
+            $("#dvnew").hide();
+            $("input[name='Group']").on("change", function () {
+                if ($(this).val() == "Existing") {
+                    $("#dvexist").show();
+                    $("#dvnew").hide();
+                }
+                if ($(this).val() == "New") {
+                    $("#dvnew").show();
+                    $("#dvexist").hide();
+                }
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("input[id='Bandwidth']").val(1024);
+            });
+        </script>
+    </body>
+</html>

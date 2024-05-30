@@ -1,0 +1,91 @@
+﻿@model TranzmitUI.Models.DeviceMaster
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>DEVICE</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+        <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div style="height:50px;background-color:white;color:black;">
+            <center><h3>DEVICE INSERT</h3></center>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="column" style="padding:15px 5px 5px 150px">
+                    <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+
+                        <tr>
+                            <td>@*@Html.LabelFor(model => model.DeviceIP)*@DEVICE IP</td>
+                            <td style="border:groove;">@Html.TextBoxFor(model => model.DeviceIP)</td>
+                        </tr>
+                        <tr>
+                            <td>@*@Html.LabelFor(model => model.DevicePort)*@DEVICE PORT</td>
+                            <td style="border:groove;">@Html.TextBoxFor(model => model.DevicePort)</td>
+                        </tr>
+                        <tr>
+                            <td>@*@Html.LabelFor(model => model.DeviceMake)*@DEVICE MAKE</td>
+                            <td>@Html.DropDownListFor(model=>model.DeviceMake,
+                               new List<SelectListItem>{new SelectListItem{ Text="DEIBOLD"},
+                                   new SelectListItem{ Text="NCR" } },"Please Select")</td>
+                        </tr>                        
+                        <tr>
+                            <td>@*@Html.LabelFor(model => model.LocationName)*@LOCATION</td>
+                            <td>@Html.DropDownListFor(model => model.LocationName, Model.LocationSelect, "Please Select")</td>
+                        </tr>
+                        <tr>
+                            <td>@*@Html.LabelFor(model => model.Bandwidth)*@BANDWIDTH</td>
+                            <td style="border:groove;">@Html.TextBoxFor(model => model.Bandwidth)</td>
+                        </tr>
+                        <tr>
+                            <td>GROUP</td>
+                            <td>@Html.RadioButtonFor(model => model.Group, "Existing", true) EXISTING</td>
+                            <td>@Html.RadioButtonFor(model => model.Group, "New", true) NEW</td>
+                        </tr>
+                    </table>
+                    <div id="dvexist" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>@*@Html.LabelFor(model => model.GroupName)*@GROUP</td>
+                                <td>@Html.DropDownListFor(model => model.GroupName, Model.GroupSelect, "Please select")</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="dvnew" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>@*@Html.LabelFor(model => model.Gname)*@GROUP</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.Gname)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>            
+                <div class="container-login100-form-btn" style="margin-left:600px;padding-top:inherit">
+                    <button class="login100-form-btn">
+                        ADD
+                    </button>
+                </div>
+            </div>
+        }
+        <script>
+            $("#dvexist").hide();
+            $("#dvnew").hide();
+            $("input[name='Group']").on("change", function () {
+                if ($(this).val() == "Existing") {
+                    $("#dvexist").show();
+                    $("#dvnew").hide();
+                }
+                if ($(this).val() == "New") {
+                    $("#dvnew").show();
+                    $("#dvexist").hide();
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+﻿@model TranzmitUI.Models.Country
+
+<html>
+<head>
+    <title>LOCATION</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="pageContainer">
+        <div class="insertPageTitle">UpdateCountry</div>
+
+
+    </div>
+    <hr />
+    <div>
+        @if (ViewBag.CountryUpdateFail != null)
+        {
+            <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CountryUpdateFail");
+                         };
+            </script>
+        }
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="column" style="height:100%; width:100%;">
+                <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 30%;">
+
+                    <tr>
+                        <td  class="lblsec">Country</td>
+                        <td>
+                            @Html.TextBoxFor(model => model.CountryName, new { @class = "inputstyle" })<br />
+                            @Html.ValidationMessageFor(model => model.CountryName)
+
+                        </td>
+                    </tr>
+
+
+                    <tr>
+
+                        <td></td>
+                        <td style="padding-top:100px;" valign="bottom">
+                            <div style="width:300px;">
+                                <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                    Update
+                                </button>
+                                <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/LocationList">
+
+                                    Cancel
+
+                                </a>
+                            </div>
+
+
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    }
+    <script>
+        $(function () {
+            $(".multiselect").multiselect();
+        });
+    </script>
+</body>
+</html>

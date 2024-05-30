@@ -1,0 +1,315 @@
+﻿
+@model TranzmitUI.Models.AutoID
+<DOCTYPE! html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script src="~/Content/jquery.1.8.3.min.js"></script>
+        <script src="~/Content/bootstrap-multiselect.js"></script>
+        <link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </head>
+    <body style="overflow-x:hidden;">
+        @*<div class="insertPageTitle">Add LOCATION<hr  /></div>*@
+        <div class="pageContainer">
+            <div class="insertPageTitle">Location Master</div>
+            @*<div>
+                <button class="scheduleButton" style="margin-right:5px" onclick="wrong_pass_alert()">
+                    SAVE
+                </button>
+                <a class="cancelRedirectButton" style="" href="/Home/LocationList">
+
+                    Cancel
+
+                </a>
+            </div>*@
+
+        </div>
+        <hr/>
+        <div>
+            @if (ViewBag.LocationInsertFail != null)
+            {
+                <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.LocationInsertFail");
+                         };
+                </script>
+            }
+
+            else if (ViewBag.CityInsertFail != null)
+            {
+                <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CityInsertFail");
+                         };
+                </script>
+            }
+
+            else if (ViewBag.StateInsertFail != null)
+            {
+                <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.StateInsertFail");
+                         };
+                </script>
+            }
+
+            else if (ViewBag.CountryInsertFail != null)
+            {
+                <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CountryInsertFail");
+                         };
+                </script>
+            }
+
+        </div>
+      
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="column" style="height:100%; width:100%;">
+
+                    <table style="margin:0 30%">
+                        <tr class="labelstyle">
+
+                            <td style="padding:0 15px 0 15px;">@Html.RadioButtonFor(model => model.Branch, "Location", true) Location</td>
+                            <td style="padding:0 15px 0 15px;">@Html.RadioButtonFor(model => model.Branch, "City", false) City </td>
+                            <td style="padding:0 15px 0 15px;">@Html.RadioButtonFor(model => model.Branch, "State", false) State </td>
+                            <td style="padding:0 15px 0 15px;">@Html.RadioButtonFor(model => model.Branch, "Country", false) Country </td>
+                        </tr>
+                    </table>
+
+                    <div style="clear:both">&nbsp;</div>
+
+                    <div id="dvloc" style="display: none">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+
+                            <tr>
+                                <td class="lblsec">Location</td>
+
+                                <td>
+                                    @Html.TextBoxFor(model => model.LoName, new { @class = "inputstyle" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.LoName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lblsec">City</td>
+                                <td>
+                                    @Html.DropDownListFor(model => model.CiID, Model.CitySelect, "Please Select", new { @class = "ddlsize" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.CiID)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                
+                                <td></td>
+                                <td style="padding-top:100px;" valign="bottom">
+                                    <div>
+                                        <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                            Add
+                                        </button>
+                                        <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/LocationList">
+
+                                            Cancel
+
+                                        </a>
+                                    </div>
+
+
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div id="dvcit" style="display: none">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%">
+
+                            <tr>
+                                <td class="lblsec">City </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.CiName, new { @class = "inputstyle" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.CiName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lblsec">State</td>
+                                <td>
+                                    @Html.DropDownListFor(model => model.StaID, Model.StateSelect, "Please Select", new { @class = "ddlsize" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.StaID)
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td></td>
+                                <td style="padding-top:100px;" valign="bottom">
+                                    <div style="width:300px;">
+                                        <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                            Add
+                                        </button>
+                                        <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/LocationList">
+
+                                            Cancel
+
+                                        </a>
+                                    </div>
+
+
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div id="dvsta" style="display: none">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%">
+
+                            <tr>
+                                <td class="lblsec">State </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StaName, new { @class = "inputstyle" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.StaName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lblsec">Country</td>
+                                <td>
+                                    @Html.DropDownListFor(model => model.CoIDs, Model.CountrySelect, "Please Select", new { @class = "ddlsize" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.CoIDs)
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td></td>
+                                <td style="padding-top:100px;" valign="bottom">
+                                    <div style="width:300px;">
+                                        <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                            Add
+                                        </button>
+                                        <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/LocationList">
+
+                                            Cancel
+
+                                        </a>
+                                    </div>
+
+
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div id="dvcoun" style="display:block;">
+
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%">
+
+                            <tr>
+                                <td valign="top" class="lblsec">Country </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.CoName, new { @class = "inputstyle" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.CoName)
+
+                                    @*<p style="display: none; color: red" class="clscountry">Please fill the detail</p>*@
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td></td>
+                                <td style="padding-top:100px;" valign="bottom">
+                                    <div style="width:300px;">
+                                        <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                            Add
+                                        </button>
+                                        <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/LocationList">
+
+                                            Cancel
+
+                                        </a>
+                                    </div>
+
+
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        }
+        <script>
+            $("#dvloc").hide();
+            $("#dvcit").hide();
+            $("#dvsta").hide();
+            $("#dvcoun").hide();
+            $("input[name='Branch']").on("change", function () {
+                if ($(this).val() == "Location") {
+                    $("#dvloc").show();
+                    $("#dvcit").hide();
+                    $("#dvsta").hide();
+                    $("#dvcoun").hide();
+                }
+                if ($(this).val() == "City") {
+                    $("#dvcit").show();
+                    $("#dvloc").hide();
+                    $("#dvsta").hide();
+                    $("#dvcoun").hide();
+                }
+                if ($(this).val() == "State") {
+                    $("#dvsta").show();
+                    $("#dvloc").hide();
+                    $("#dvcit").hide();
+                    $("#dvcoun").hide();
+                }
+                if ($(this).val() == "Country") {
+                    $("#dvcoun").show();
+                    $("#dvloc").hide();
+                    $("#dvcit").hide();
+                    $("#dvsta").hide();
+                }
+            });
+            $(function () {
+                $(".multiselect").multiselect();
+            });
+        </script>
+        @*<script>
+            function ClickAdd(event)
+            {
+                debugger;
+                /*if ($("#dvcoun") == string.IsNullOrEmpty(autoIDs.CoName)) {*/
+                if ($("#CoName").val() == "") {
+                    $(".clscountry").show();
+                    event.preventDefault();
+
+                }
+                else {
+                    $(".clscountry").hide();
+                }
+
+
+            }
+        </script>*@
+    </body>
+</html>

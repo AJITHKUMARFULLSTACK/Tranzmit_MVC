@@ -1,0 +1,109 @@
+﻿@model IEnumerable<TranzmitUI.Models.DeviceTransmission>
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>Transmission</title>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/gridmvc.js"></script>
+        <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script src="~/Content/jquery1.10.1.min.js"></script>
+        
+    </head>
+    <body>
+
+        <div>
+            <div class="row" style="width: 100%; align-content: center;">
+                <div style="width:5%;float:left;"></div>
+                <div class="column" style="width:100%;float:left;">
+                    <div style="width:50%;float:right;">
+                        <input id="myInput" type="text" class="inputstyle" placeholder="search" style="float:right;border:groove;">
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="pageContainer">
+                        <div class="scheduleTitle">
+                            ScheduleFile Transfer List
+                        </div>
+                        
+                    </div>
+                    <div style="clear:both;"></div>
+                 
+                    <div style="width:100%;">
+                        <div id="location">
+                            <table class="table @(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "sessiontableheader" : "tableheader")" style="width:100%;font-size:15px;" cellpadding="2" cellspacing="2">
+                                <tr>
+                                    <th>DeviceIP</th>
+                                    <th>DevicePort</th>
+                                    <th>Typew</th>
+                                    <th>ScheduleDate </th>
+                                    <th>ScheduleTime</th>
+                                    <th>SourceFile</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tbody id="myTable">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DeviceIP)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DevicePort)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Type)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ScheduleDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ScheduleTime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SourcePath)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TransStatus)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+                <div style="width:5%;float:left;"></div>
+                <div style="clear:both;"></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <style>
+            table th
+            {
+                font-size:13px;
+
+            }
+            table td
+            {
+                font-size:11px;
+            }
+        </style>
+        <script>
+
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

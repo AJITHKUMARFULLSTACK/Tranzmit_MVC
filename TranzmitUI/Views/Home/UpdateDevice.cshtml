@@ -1,0 +1,58 @@
+﻿@model TranzmitUI.Models.DeviceMaster
+
+
+
+<html>
+<head>
+    <title>DEVICE</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+</head>
+<body>
+    <center><h3>UPDATE DEVICE</h3></center>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="column" style="padding:23px 5px 5px 150px;">
+                <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+
+                    <tr>
+                        <td>DEVICE IP</td>
+                        <td style="border:groove;">@Html.TextBoxFor(model => model.DeviceIP)</td>
+                    </tr>
+                    <tr>
+                        <td>DEVICE PORT</td>
+                        <td style="border:groove;">@Html.TextBoxFor(model => model.DevicePort)</td>
+                    </tr>
+                    <tr>
+                        <td>DEVICE MAKE</td>
+                        <td>@Html.DropDownListFor(model=>model.DeviceMake,
+                           new List<SelectListItem>{new SelectListItem{ Text="DEIBOLD"},
+                           new SelectListItem{ Text="NCR" } },"Please Select")</td>
+                    </tr>
+                    <tr>
+                        <td>LOCATION</td>
+                        <td>@Html.DropDownList("LocationName", (IEnumerable<SelectListItem>)(ViewData["Location"]), "Please Select")</td>
+                    </tr>
+                    <tr>
+                        <td>BANDWIDTH</td>
+                        <td style="border:groove;">@Html.TextBoxFor(model => model.Bandwidth)</td>
+                    </tr>
+                    <tr>
+                        <td>GROUP</td>
+                        <td>@Html.DropDownList("GroupName", (IEnumerable<SelectListItem>)(ViewData["Group"]), "Please Select")</td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+        <div class="container-login100-form-btn" style="margin-left:600px;padding-bottom:100px;">
+            <button class="login100-form-btn">
+                UPDATE
+            </button>
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿@model TranzmitUI.Models.LocationMaster
+
+<html>
+<head>
+    <title>LOCATION</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+</head>
+<body>
+    <center><h3>UPDATE LOCAION</h3></center>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="column"style="padding:23px 5px 5px 150px;">
+                <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+
+                    <tr>
+                        <td>@*@Html.LabelFor(model => model.LocationName)*@LOCATION</td>
+                        <td style="border:groove;">@Html.TextBoxFor(model => model.LocationName)</td>
+                    </tr>
+                    <tr>
+                        <td>@*@Html.LabelFor(model => model.CityId)*@CITY</td>
+                        <td>@Html.DropDownList("CityName", (IEnumerable<SelectListItem>)(ViewData["City"]), "Please Select")</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container-login100-form-btn" style="margin-left:600px;">
+            <button class="login100-form-btn">
+                UPDATE
+            </button>
+        </div>
+    }
+    <script>
+        $(function () {
+                    $(".multiselect").multiselect();
+                });
+    </script>
+</body>
+</html>

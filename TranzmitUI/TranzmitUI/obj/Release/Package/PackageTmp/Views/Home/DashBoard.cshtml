@@ -1,0 +1,228 @@
+﻿@model IEnumerable<TranzmitUI.Models.DeviceTransmission>
+@*@model TranzmitUI.Models.FilterViewModel*@
+
+<DOCTYPE! html>
+    <html>
+    <head>
+
+        <title>DashBoard</title>
+        @*<meta http-equiv="refresh" content="120" />*@
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/gridmvc.js"></script>
+        <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script src="~/Content/jquery1.10.1.min.js"></script>
+        <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+        <script src="~/Scripts/JavaScript.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+        @section Scripts {
+
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Scripts/bootstrap.js"></script>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <script>
+                var TeamDetailPostBackURL = '/Home/Filter';
+                $(function () {
+                   
+                   
+
+                    $(".ShowModelPopUp").click(function () {
+                       
+                        var $buttonClicked = $(this);
+                        //var id = $buttonClicked.attr('data-id');
+                        var options = { "backdrop": "static", keyboard: true };
+                        $.ajax({
+                            type: "GET",
+                            url: TeamDetailPostBackURL,
+                            contentType: "application/json; charset=utf-8",
+                            // data: { "Id": id },
+                            datatype: "json",
+                            success: function (data) {
+                                
+                                $('#myModalContent').html(data);
+                                $('#myModal').modal(options);
+                                $('#myModal').modal('show');
+
+                            },
+                            //error: function () {
+                            //    alert("Dynamic content load failed.");
+                            //}
+                        });
+                    });
+
+
+                    $("#closbtn").click(function () {
+                        $('#myModal').modal('hide');
+                    });
+                });
+
+            </script>
+        }
+    </head>
+    <body>
+
+        <div>
+            <div class="row" style="width: 100%; align-content: center;">
+                <div style="width:10%;float:left;"></div>
+                <div class="column" style="width:100%;float:left;">
+                    <div style="width:50%; float:right;">
+                        <input id="myInput" type="text" class="inputstyle" placeholder="search" style="float:right;border:groove;">
+                    </div>
+
+                    <div style="width: 100%; display: inline-flex; justify-content: space-between;margin-top:10px;">
+                        <a href="javascript:void(0);" class="ShowModelPopUp @(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">Filter</a>
+                        @if (ViewBag.IsFilter == "Y")
+                        {
+                            <a href="@Url.Action("ClearFilter", "Home")" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">Cancel</a>
+
+                        }
+
+                    </div>
+
+                    @*<br />*@
+
+                    <div style="clear:both;"></div>
+                    <div style="width:100%;">
+                        <div id="location">
+                            <div>
+                                <p style="float:left;"><i>@ViewBag.FilterRange</i></p>
+
+
+
+                            </div>
+                            <table class="table @(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "sessiontableheader" : "tableheader")" style="width:100%;font-size:15px;" cellpadding="2" cellspacing="2">
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Bank Name</th>
+                                    <th>ATM ID</th>
+                                    <th>IP</th>
+                                    <th>Port</th>
+                                    <th>Date</th>
+                                    <th>Filename</th>
+                                    <th>DateTime</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tbody id="myTable">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td width="3%">
+                                                @Html.DisplayFor(modelItem => item.SNo)
+                                            </td>
+
+                                            <td width="20%" align="left">
+                                                @Html.DisplayFor(modelItem => item.Bankname)
+                                            </td>
+                                            <td width="10%">
+                                                @Html.DisplayFor(modelItem => item.ATMID)
+                                            </td>
+                                            <td width="10%">
+                                                @Html.DisplayFor(modelItem => item.ATMIP)
+                                            </td>
+                                            <td width="5%">
+                                                @Html.DisplayFor(modelItem => item.ATMPORT)
+                                            </td>
+                                            <td width="5%">
+                                                @Html.DisplayFor(modelItem => item.EJDate)
+                                            </td>
+                                            <td width="15%">
+                                                @Html.DisplayFor(modelItem => item.FileName)
+                                            </td>
+                                            <td width="12%">
+                                                @Html.DisplayFor(modelItem => item.ReceiveDatetime)
+                                            </td>
+                                            <td width="20%">
+                                                @Html.DisplayFor(modelItem => item.EJStatus)
+                                            </td>
+                                            <td>
+                                                @if ((item.TransStatus == "C") || (item.TransStatus == "NA"))
+                                                {
+
+                                                }
+
+                                                else if ((item.TransStatus != "C") && (item.RescheduleStatus != "P") && (TranzmitUI.Models.DeviceTransmission.RescheduleAccessFlag != "Y"))
+                                                {
+                                                    <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "session-btn-reschedule " : "btn-reschedule")" href="@Url.Action("ReScheduleFile", "Home",new { id = item.SNo,  @style = "width:100px;text-align:center;" })">Reschedule</a>
+
+                                                }
+                                                else if ((item.RescheduleStatus == "P") && (item.TransStatus != "C"))
+                                                {
+                                                    <p>Processing</p>
+
+
+                                                }
+
+                                                else if (TranzmitUI.Models.DeviceTransmission.RescheduleAccessFlag == "Y")
+                                                {
+                                                    <a class="btn-reschedulenone" style="width: 100px; text-align: center;">Reschedule</a>
+
+                                                }
+
+
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id='myModal' class='modal'>
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div id='myModalContent'></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        @*<div style="width:100%;">
+                <div style="width:40%;float:left;">&nbsp;</div>
+                <div class="btn btn-block" style="width:20%;float:left;margin-bottom:20px;margin-top:40px;">
+                    @Html.ActionLink("Export Excel", "DashboardDirect", "HomeController", new { @class = "login100-form-btn", @style = "width:150px;text-align:center;" })
+                </div>
+                <div style="width:40%;float:left;">&nbsp;</div>
+            </div>*@
+
+                    </div>
+
+                </div>
+                <div style="width:5%;float:left;"></div>
+                <div style="clear:both;"></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <style>
+            table th {
+                font-size: 13px;
+            }
+
+            table td {
+                font-size: 11px;
+            }
+        </style>
+        <script>
+
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+        @*<script type="text/javascript">
+                ShowModelPopUp = function () {
+                    window.open('/Home/FilterPopup', "PopupWindow", 'width=400px,height=400px');
+                }
+            </script>*@
+
+        
+
+    </body>
+</html>

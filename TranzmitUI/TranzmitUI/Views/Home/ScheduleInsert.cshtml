@@ -1,0 +1,284 @@
+﻿@model TranzmitUI.Models.ScheduleMaster
+
+
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>SCHEDULE</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="~/Content/jquery.1.8.3.min.js"></script>
+        <link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+        <script src="~/Content/bootstrap-multiselect.js"></script>
+        <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+        <link href="~/Content/jquery-ui-timepicker-addon.min.css" rel="stylesheet" />
+        <script src="~/Scripts/JavaScript.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </head>
+    <body style="overflow-x:hidden;">
+        <div class="pageContainer">
+            <div class="insertPageTitle">Create Schedule</div>
+            @*<div>
+                <button class="scheduleButton" style="margin-right:5px" onclick="wrong_pass_alert()">
+                    SAVE
+                </button>
+                <a class="cancelRedirectButton" style="" href="/Home/DeviceList">
+
+                    CANCEL
+
+                </a>
+            </div>*@
+
+        </div>
+        <hr />
+        @*<div style="padding:10px;color:black;">
+            <center><h3>SCHEDULE INSERT</h3></center>
+        </div>*@
+        @section Scripts {
+            <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+            <script src="~/Scripts/jquery-ui-timepicker-addon.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#DeployDate').datepicker({
+                        dateFormat: "dd-mm-yy",
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: "-60:+0"
+                    });
+                    $('#ScheduleDate').datepicker({
+                        dateFormat: "dd-mm-yy",
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: "-60:+0"
+                    });
+                    $(document).ready(function () {
+                        $('#ScheduleTime').timepicker({
+                            timeFormat: 'HH:mm:ss',
+                            use24hours: true
+                        });
+                    });
+                    $(document).ready(function () {
+                        $('#DeployTime').timepicker({
+                            timeFormat: 'HH:mm:ss',
+                            use24hours: true
+                        });
+                    });
+                });
+            </script>
+        }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="column" style="height:100%; width:100%;">
+                   
+
+                    <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+                        <!--<tr>
+        <td class="lblsec">ProfileType</td>
+        <td colspan="2">-->
+                        @*@Html.RadioButtonFor(model => model.ProfileType, "GROUP", new { @checked  = "checked"}) Group*@
+                        <!--@Html.RadioButtonFor(model => model.ProfileType, "INDEPENDENT", new { @checked = "checked" }) Independent
+        </td>
+
+    </tr>-->
+                        <tr>
+                            <td class="lblsec">ProfileSelect</td>
+                            <td colspan="2">
+                                @Html.RadioButtonFor(model => model.ProfileType, "GROUP", new { @checked = "checked" }) GROUP
+                               @Html.RadioButtonFor(model => model.ProfileType, "INDEPENDENT", new { @checked = "checked" }) INDEPENDENT
+                            </td>
+
+                        </tr>
+
+
+                    </table>
+                    
+                    <div id="dvGroup">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+                            <tr>
+                                <td class="lblsec">Group</td>
+                                <td>
+                                    @Html.DropDownListFor(model => model.Group, Model.GroupSelect, "Please select", new { @class = "ddlsize" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.Group)
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="dvDevice">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 30%;">
+                            <tr>
+
+                                <td class="lblsec">Device</td>
+                                <td>
+                                    @Html.DropDownListFor(model => model.DeviceName, Model.DeviceSelect, "Please select", new { @class = "ddlsize" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.DeviceName)
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+
+                        <tr>
+                            <td class="lblsec">Repositoryfile</td>
+                            <td>
+                                @Html.DropDownListFor(model => model.RepName, Model.RepSelect, "Please select", new { @class = "ddlsize" })
+                                <br />
+                                @Html.ValidationMessageFor(model => model.RepName)
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td class="lblsec">Desitination</td>
+                            <td>
+                                @Html.DropDownListFor(model => model.DirName, Model.DirSelect, "Please select", new { @class = "ddlsize" })
+
+                                <br />
+                                @Html.ValidationMessageFor(model => model.DirName)
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        @*<tr>
+                            <td class="lblsec">TransferRate</td>
+                            <td width="60%" colspan="2">
+                                @Html.TextBoxFor(model => model.TransferRate, new { @class = "inputstyle", @readonly = "readonly" }) &nbsp;(In Bytes)
+                                <br />
+                                @Html.ValidationMessageFor(model => model.TransferRate)
+                            </td>
+
+                        </tr>*@
+
+                        <tr>
+                            <td class="lblsec">Scheduletype</td>
+                            <td colspan="2">
+                                @Html.RadioButtonFor(model => model.Schedule, "SCHEDULE", true) SCHEDULE
+                                &nbsp;&nbsp;@Html.RadioButtonFor(model => model.Schedule, "IMMEDIATE", true) IMMEDIATE
+                            </td>
+
+                        </tr>
+
+                    </table>
+                    <div id="dvschedule" style="display: none">
+                        <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 25%;">
+
+                            <tr>
+                                <td class="lblsec">ScheduleDate</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.ScheduleDate, new { @class = "inputstyle" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.ScheduleDate)
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="lblsec">ScheduleTime</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.ScheduleTime, new { @class = "inputstyle" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.ScheduleTime)
+                                </td>
+                                <td></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div id="dvimmediate" style="display: none">
+                        @*<table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                        <tr>
+                            <td style="padding:0 15px 0 15px;">TRANSFER RATE</td>
+                            <td style="border:groove;">@Html.TextBoxFor(model => model.TransferRate)</td>
+                            <td>(In Bytes)</td>
+                        </tr>*@
+                        @*<tr>
+                            <td style="padding:0 15px 0 15px;">DEPLOY DATE</td>
+                            <td style="border:groove;">
+                                @Html.EditorFor(model => model.DeployDate)
+                        </td>*@
+                        <!--//</tr>-->
+                        <!--<tr>-->
+                        @*<td style="padding:0 15px 0 15px;">DEPLOY TIME</td>
+                        <td style="border:groove;">@Html.TextBoxFor(x => x.DeployTime)</td>*@
+
+                        <!--</tr>-->
+                        @*</table>*@
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container-login100-form-btn" style="padding-top:10px;margin:0 35%;position:relative;">
+                <button class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                    Add
+                </button>
+                &nbsp;&nbsp;
+                <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" style="float: left;" href="/Home/ScheduleList">
+
+                    Cancel
+
+                </a>
+            </div>
+        }
+
+        <script type="text/javascript">
+
+            $("#dvGroup").hide();
+            $("#dvDevice").hide();
+
+            $("input[name='ProfileType']").on("change", function () {
+
+                if ($(this).val() == "GROUP") {
+                    $("#dvGroup").show();
+                    $("#dvDevice").hide();
+
+                }
+                if ($(this).val() == "INDEPENDENT") {
+                    $("#dvGroup").hide();
+                    $("#dvDevice").show();
+                }
+            });
+
+
+
+            $("#dvschedule").hide();
+            $("#dvimmediate").hide();
+            $("input[name='Schedule']").on("change", function () {
+                if ($(this).val() == "SCHEDULE") {
+                    $("#dvschedule").show();
+                    $("#dvimmediate").hide();
+                }
+                if ($(this).val() == "IMMEDIATE") {
+                    $("#dvimmediate").show();
+                    $("#dvschedule").hide();
+                }
+            });
+
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("input[id='TransferRate']").val(1024);
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#dvDevice").show();
+            });
+        </script>
+        <style>
+            td {
+                white-space: nowrap !important;
+            }
+        </style>
+
+
+    </body>
+        </html>
+

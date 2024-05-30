@@ -1,0 +1,70 @@
+﻿@model TranzmitUI.Models.ScheduleMaster
+
+<html>
+<head>
+    <title>SCHEDULE</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+</head>
+<body>
+    <center><h3>UPDATE SCHEDULE</h3></center>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="column" style="padding:23px 5px 5px 150px;">
+            <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                <tr>
+                    <td>PROFILE</td>
+                    <td>@Html.RadioButtonFor(model => model.ScheduleType, "IMMEDIATE", false) IMMEDIATE</td>
+                    <td>@Html.RadioButtonFor(model => model.Profile, "SCHEDULE", false) SCHEDULE</td>
+                </tr>
+                <tr>
+                    <td>REPCODE</td>
+                    <td>@Html.DropDownList("RepCode", (IEnumerable<SelectListItem>)
+                         (ViewData["Repos"]), "Please Select")</td>
+                </tr>
+                <tr>
+                    <td>FILENAME</td>
+                    <td> @Html.DropDownList("RepName", (IEnumerable<SelectListItem>)
+                            (ViewData["FileName"]), "Please Select")</td>
+                </tr>
+                <tr>
+                    <td>DIRCODE</td>
+                    <td>@Html.DropDownList("DirCode", (IEnumerable<SelectListItem>)
+                           (ViewData["Direct"]), "Please Select")
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="column" style="padding:23px 5px 5px 150px;">
+            <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                <tr>
+                    <td>SCHEDULE DATE</td>
+                    <td style="border:groove;">@Html.TextBoxFor(model => model.ScheduleDate)</td>
+                </tr>
+                <tr>
+                    <td>SCHEDULE TIME</td>
+                    <td style="border:groove;">@Html.TextBoxFor(model => model.ScheduleTime)</td>
+                </tr>
+                <tr>
+                    <td>DEPLOYE DATE</td>
+                    <td style="border:groove;">@Html.TextBoxFor(model => model.DeployDate)</td>
+                </tr>
+                <tr>
+                    <td>DEPLOY TIME</td>
+                    <td style="border:groove;">@Html.TextBoxFor(model => model.DeployTime)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+        <div class="container-login100-form-btn" style="margin-left:600px;">
+            <button class="login100-form-btn">
+                UPDATE
+            </button>
+        </div>
+    }
+</body>
+</html>

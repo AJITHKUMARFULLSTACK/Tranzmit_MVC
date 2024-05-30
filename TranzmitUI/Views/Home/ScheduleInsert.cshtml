@@ -1,0 +1,136 @@
+﻿@model TranzmitUI.Models.ScheduleMaster
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>SCHEDULE</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+        <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div style="height:50px;background-color:white;color:black;">
+            <center><h3>SCHEDULE INSERT</h3></center>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="column" style="padding:5px 5px 5px 150px">
+                    <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                        <tr>
+                            <td>PROFILE</td>
+                            <td>@Html.RadioButtonFor(model => model.Profile, "DEVICE", true) DEVICE</td>
+                            <td>@Html.RadioButtonFor(model => model.Profile, "LOCATION", true) LOCATION</td>
+                        </tr>
+                    </table>
+                    <div id="dvdevice" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>DEVICE NAME</td>
+                                <td>@Html.DropDownListFor(model => model.DeviceName, Model.DeviceSelect, "Please select")</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="dvlocation" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>LOCATION</td>
+                                <td>@Html.DropDownListFor(model => model.LocationName, Model.LocationSelect, "Please select")</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                        <tr>
+                            <td>FILENAME</td>
+                            <td>@Html.DropDownListFor(model => model.RepName, Model.RepSelect, "Please select")</td>
+                        </tr>
+                        <tr>
+                            <td>DIRNAME</td>
+                            <td>@Html.DropDownListFor(model => model.DirName, Model.DirSelect, "Please select")</td>
+                        </tr>
+                        <tr>
+                            <td>SCHEDULE TYPE</td>
+                            <td>@Html.RadioButtonFor(model => model.Schedule, "SCHEDULE", true) SCHEDULE</td>
+                            <td>@Html.RadioButtonFor(model => model.Schedule, "IMMEDIATE", true) IMMEDIATE</td>
+                        </tr>
+                    </table>
+                    <div id="dvschedule" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>TRANSFER RATE</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.TransferRate)</td>
+                            </tr>
+                            <tr>
+                                <td>SCHEDULE DATE</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.ScheduleDate)</td>
+                            </tr>
+                            <tr>
+                                <td>SCHEDULE TIME</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.ScheduleTime)</td>
+                            </tr>
+                            <tr>
+                                <td>DEPLOY DATE</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.DeployDate)</td>
+                            </tr>
+                            <tr>
+                                <td>DEPLOY TIME</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.DeployTime)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="dvimmediate" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>TRANSFER RATE</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.TransferRate)</td>
+                            </tr>
+                            <tr>
+                                <td>DEPLOY DATE</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.DeployDate)</td>
+                            </tr>
+                            <tr>
+                                <td>DEPLOY TIME</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.DeployTime)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="container-login100-form-btn" style="margin-left:600px;margin-top:140px">
+                    <button class="login100-form-btn">
+                        ADD
+                    </button>
+                </div>
+            </div>
+        }
+        <script>
+            $("#dvdevice").hide();
+            $("#dvlocation").hide();
+            $("input[name='Profile']").on("change", function () {
+                if ($(this).val() == "DEVICE") {
+                    $("#dvdevice").show();
+                    $("#dvlocation").hide();
+                }
+                if ($(this).val() == "LOCATION") {
+                    $("#dvlocation").show();
+                    $("#dvdevice").hide();
+                }
+            });
+            $("#dvschedule").hide();
+            $("#dvimmediate").hide();
+            $("input[name='Schedule']").on("change", function () {
+                if ($(this).val() == "SCHEDULE") {
+                    $("#dvschedule").show();
+                    $("#dvimmediate").hide();
+                }
+                if ($(this).val() == "IMMEDIATE") {
+                    $("#dvimmediate").show();
+                    $("#dvschedule").hide();
+                }
+            });
+
+        </script>
+    </body>
+</html>

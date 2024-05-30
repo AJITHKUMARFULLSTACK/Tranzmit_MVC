@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+   
+    <link href="~/Content/main.css" rel="stylesheet" />
+   <link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+  
+</head>
+<body>
+    <header>
+        <div class="content">
+            @Html.Partial("_Header")
+        </div>
+
+    </header>
+    <div class="fullPage">
+        <div class="topbar" style="width:100%;">
+            @if (Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank")
+            {
+
+                <div class="sessionavbar">
+
+                    <img alt="Logo" style="width:150px;height:70px;float:left;" src="@Url.Content("~/images/KeralaBankLogo.png")">
+
+                    <div class="sessionTitle">
+                        <span>Tranzmit</span>
+                    </div>
+
+
+                    <div style="padding:10px;">
+                        <div class="userDetails">UserID: @Session["UserName"]</div>
+                        <div class="userDetails">DateTime: @DateTime.Now</div>
+                    </div>
+
+
+                </div>
+            }
+            else
+            {
+
+
+                <div class="navbar" >
+
+
+
+                    <div style="float:left;">
+                        <span class="HeaderTitle">Tranzmit</span>
+                    </div>
+
+
+                    <div style="padding:10px;">
+                        <div class="userDetails">UserName: @Session["UserName"]</div>
+                        <div class="userDetails">DateTime: @DateTime.Now</div>
+                    </div>
+
+
+                </div>
+            }
+
+        </div>
+
+
+        <div class="sidebar  @(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "SessionsidebarBackGround" : "sidebarBackGround")">
+            <nav class="container">
+                <ul>
+                    <li class="nav-item">
+
+                        <a @ViewBag.MenuHome href="/Home/DashBoard">Dashboard</a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a @ViewBag.MenuLocation href="/Home/LocationList">Location</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a @ViewBag.MenuDevice href="/Home/DeviceList">Device</a>
+                    </li>
+                    <li class="nav-item">
+                        <a @ViewBag.MenuGroup href="/Home/GroupList">Group</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a @ViewBag.MenuRepository href="/Home/RepositoryList">Repository</a>
+                    </li>
+                    <li class="nav-item">
+                        <a @ViewBag.MenuSchedule href="/Home/ScheduleList">Schedule</a>
+                    </li>
+
+
+
+
+                    <li class="nav-item">
+                        <a @ViewBag.MenuTransmission href="/Home/TransmissionList">Transmission</a>
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a @ViewBag.MenuDownload href="/Home/EJFile">Download</a>
+
+                    </li>
+                    @if (@Session["UserRole"].ToString() != "M")
+                    {
+                        <li class="nav-item">
+
+                            <a @ViewBag.MenuReport href="/Home/Report">Report</a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+
+                            <a @ViewBag.MenuUser href="/Home/UserList">User</a>
+
+
+                        </li>
+
+                    }
+
+                    <li class="nav-item" style="padding-left:10px;">
+                        <a href="/Home/Logout">Logout</a>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+        </div>
+
+
+
+        <div class="main-content">
+
+            <div class="container1">
+
+                @RenderBody()
+            </div>
+        </div>
+        <div class="bottombar">
+
+
+
+
+            <p style="float:left;padding-left:20px;"> <b><span>Version:</span>V2.0.0</b>  </p>
+
+            <p style="float:right;padding-right:20px;"> <span style="font-size:xx-small">Powered By</span> <b>NARADA &trade;</b>  </p>
+
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="content-wrapper">
+            <div>
+                @Html.Partial("_Footer")
+               
+            </div>
+        </div>
+    </footer>
+    @*<script>
+            $(document).ready(function () {
+                $('#navbarDropdown').mouseenter(function () {
+                    $('.dropdown-menu').slideToggle(300, "linear");
+                });
+
+                $('.dropdown-menu').mouseleave(function () {
+                    $(this).slideToggle(300, "linear");
+                });
+            });
+        </script>*@
+
+    @*<script>
+        $(document).ready(function () {
+            // Hide all sub-menus initially
+            $('.sub-menu').hide();
+
+            // Handle click event on menu items
+            $('.menu > li > a').click(function (e) {
+                e.preventDefault(); // Prevent default link behavior
+
+                var $subMenu = $(this).next('.sub-menu'); // Find the corresponding sub-menu
+
+                // Hide other sub-menus
+                $('.sub-menu').not($subMenu).hide();
+
+                // Toggle the visibility of the clicked sub-menu
+                $subMenu.toggle();
+                /* sessionStorage.setItem('subMenuVisible', $subMenu.is(':visible'));*/
+            });
+
+            // Restore the state of the submenu from sessionStorage
+            //var isSubMenuVisible = sessionStorage.getItem('subMenuVisible');
+            //if (isSubMenuVisible === 'true') {
+            //    $('.sub-menu').show();
+            //}
+        });
+    </script>*@
+    @*<script>
+            var x = $('#myHiddenVar').val();
+            alert(x);
+        </script>*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+   <script src="~/Scripts/chosen.jquery.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+
+</html>
+<style>
+    #subdropdowm {
+        z-index: 99;
+        /* display: inline-block*/
+    }
+</style>

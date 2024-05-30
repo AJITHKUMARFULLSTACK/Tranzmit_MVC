@@ -1,0 +1,122 @@
+﻿@model TranzmitUI.Models.RepositoryMaster
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>REPOSITORY</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+        <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div style="height:50px;background-color:white;color:black;">
+            <center><h3>REPOSITORY INSERT</h3></center>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="column" style="padding:15px 5px 5px 150px">
+                    <table style="margin-left:100px;">
+                        <tr> 
+                            <td>@Html.RadioButtonFor(model => model.File, "File", true) File </td>
+                            <td>@Html.RadioButtonFor(model => model.File, "Directory", false) Directory </td>
+                        </tr>
+                    </table>
+                    <div id="dvfile" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>REP TYPE</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.RepType)</td>
+                            </tr>
+                            <tr>
+                                <td>REP PATH</td>
+                                <td> @Html.DropDownListFor(model => model.RepPath, Model.PathSelect, "Please Select")</td>
+                            </tr>
+                            <tr>
+                                <td>CHOOSE FILES</td>
+                                <td>@Html.RadioButtonFor(model => model.ChooseFiles, "Custom", true) Custom </td>
+                                <td>@Html.RadioButtonFor(model => model.ChooseFiles, "Type", false) Type </td>
+                            </tr>
+
+                            <tr>
+                                <td>VERSION</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.RepVersion)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="dvcustom" style="display: none">
+                        <table>
+                            <tr>
+                                <td>CHOOSE FILES</td>
+                                <td> @Html.DropDownList("DDLTest", (List<SelectListItem>)ViewBag.ddlitemlist, new { multiple = "multiple", @class = "multiselect" })</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="dvtype" style="display: none">
+                        <table>
+                            <tr>
+                                <td>CHOOSE FILES</td>
+                                <td>
+                                    @Html.DropDownList("MySkills", new List<SelectListItem>{
+                               new SelectListItem{ Text="exe", Value = "1" },
+                               new SelectListItem{ Text="img", Value = "2" },
+                               new SelectListItem{ Text="txt", Value = "3" },
+                               new SelectListItem{ Text="docx", Value = "4" }},new { id = "branches" })
+</td>
+                        </table>
+                    </div>
+                    <div id="dvdire" style="display: none">
+                        <table align="center" border="0" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em;">
+                            <tr>
+                                <td>DATETIME</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.DateTime)</td>
+                            </tr>
+                            <tr>
+                                <td>DESTINATION</td>
+                                <td style="border:groove;">@Html.TextBoxFor(model => model.DestinationPath)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+               
+                <div class="container-login100-form-btn" style="margin-left:600px;padding-top:inherit">
+                    <button class="login100-form-btn">
+                        ADD
+                    </button>
+                </div>
+            </div>
+        }
+        <script>
+            $("#dvfile").hide();
+            $("#dvdire").hide();
+            $("input[name='File']").on("change", function () {
+                if ($(this).val() == "File") {
+                    $("#dvfile").show();
+                    $("#dvdire").hide();
+                }
+                if ($(this).val() == "Directory") {
+                    $("#dvdire").show();
+                    $("#dvfile").hide();
+                }
+            });
+            $("#dvcustom").hide();
+            $("#dvtype").hide();
+            $("input[name='ChooseFiles']").on("change", function () {
+                if ($(this).val() == "Custom") {
+                    $("#dvcustom").show();
+                    $("#dvtype").hide();
+                }
+                if ($(this).val() == "Type") {
+                    $("#dvtype").show();
+                    $("#dvcustom").hide();
+                }
+            });
+            $(function () {
+                $(".multiselect").multiselect();
+            });
+        </script>
+    </body>
+</html>

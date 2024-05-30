@@ -1,0 +1,415 @@
+﻿@using TranzmitUI.Models
+@model dynamic
+
+<DOCTYPE! html>
+    <html>
+    <head>
+        <title>LOCATION</title>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/gridmvc.js"></script>
+        <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <script src="~/Content/jquery1.10.1.min.js"></script>
+    </head>
+    
+    <body style="overflow-x:hidden;">
+        <div>
+            <div>
+                @if (ViewBag.LocationInsertSuccess != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.LocationInsertSuccess");
+                         };
+                    </script>
+                }
+
+                else if (ViewBag.CityInsertSuccess != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CityInsertSuccess");
+                         };
+                    </script>
+                }
+
+                else if (ViewBag.StateInsertSuccess != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.StateInsertSuccess");
+                         };
+                    </script>
+                }
+
+                else if (ViewBag.CountryInsertSuccess != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CountryInsertSuccess");
+                         };
+                    </script>
+                }
+
+                else if (ViewBag.LocationUpdateSuccess != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.LocationUpdateSuccess");
+                         };
+                    </script>
+                }
+
+                else if (ViewBag.CityUpdateSuccess != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CityUpdateSuccess");
+                         };
+                    </script>
+                }
+
+                else if (ViewBag.StateUpdateSuccess != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.StateUpdateSuccess");
+                         };
+                    </script>
+                }
+
+                else if (ViewBag.CountryUpdateSuccess != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CountryUpdateSuccess");
+                         };
+                    </script>
+                }
+
+                else if (ViewBag.CouSuccess != null)
+                {
+
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CouSuccess");
+                         };
+                    </script>
+
+                }
+                else if (ViewBag.CouFail != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CouFail");
+                         };
+                    </script>
+                }
+                else if (ViewBag.StateSuccess != null)
+                {
+
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.StateSuccess");
+                         };
+                    </script>
+
+                }
+                else if (ViewBag.StateFail != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.StateFail");
+                         };
+                    </script>
+                }
+                else if (ViewBag.CitySuccess != null)
+                {
+
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CitySuccess");
+                         };
+                    </script>
+
+                }
+                else if (ViewBag.CityFail != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.CityFail");
+                         };
+                    </script>
+                }
+                else if (ViewBag.LocSuccess != null)
+                {
+
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.LocSuccess");
+                         };
+                    </script>
+
+                }
+                else if (ViewBag.LocFail != null)
+                {
+                    <script type="text/javascript">
+
+                      window.onload = function () {
+                      alert("@ViewBag.LocFail");
+                         };
+                    </script>
+                }
+            </div>
+            <div class="row" style="width: 100%; align-content: center;">
+                <div style="width:10%;float:left;"></div>
+                <div class="column" style="width:100%;float:left;">
+                    <div style="width:50%;float:right;">
+                        <input id="myInput" type="text" class="inputstyle" placeholder="search" style="float:right;border:groove;">
+                    </div>
+                    <div style="width:100%;padding-top:15px;">
+                        <table align="center" width="100%" cellpadding="2" cellspacing="2">
+                            <tr>
+                                <th colspan="4">
+                                    <div id="pageTitle" class="pageTitlestyle">
+                                        Location
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="ddlCategory">
+                                        @Html.DropDownList("MySkills", new List<SelectListItem>{
+                    new SelectListItem{ Text="Location", Value = "1" },
+                    new SelectListItem{ Text="City", Value = "2" },
+                    new SelectListItem{ Text="State", Value = "3" },
+                    new SelectListItem{ Text="Country", Value = "4" }}, new { id = "branches" })
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td style="float:right;">
+                                    @Html.ActionLink("ADD", "LocationDirect", "HomeController", new { @class = Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton" })
+                                </td>
+                                @*<td width="50%" style="padding:0px !important;">
+                        <input id="myInput" class="inputstyle" type="text" placeholder="search" style="border:groove;float:right;">
+                    </td>*@
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div style="width:100%;">
+                        <div id="location">
+                            <table class="table @(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "sessiontableheader" : "tableheader")" style="width:100%;font-size:15px;" cellpadding="2" cellspacing="2">
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Country</th>
+                                    <th>Actions</th>
+                                </tr>
+                                <tbody id="myTable">
+                                    @foreach (Location loc in Model.Location)
+                                    {
+                                        <tr>
+                                            <td>@loc.LocationId</td>
+                                            <td>@loc.LocationName</td>
+                                            <td>@loc.CityName</td>
+                                            <td>@loc.StateName</td>
+                                            <td>@loc.CountryName</td>
+                                            <td>
+                                                <a href="@Url.Action("UpdateLocation", "Home",new { id = loc.LocationId })" title="Edit">
+                                                    <img alt="Edit" style="width:20px;height:20px;" src="@Url.Content("~/images/update.png")">
+
+                                                </a>
+                                                &nbsp;&nbsp;
+                                                <a href="@Url.Action("DeleteLocation", "Home",new { id = loc.LocationId })" title="Delete" onclick="return confirm('Are sure wants to delete?');">
+                                                    <img alt="Delete" style="width:22px;height:20px;" src="@Url.Content("~/images/delete.png")">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="city">
+                            <div id="location">
+                                <table class="table @(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "sessiontableheader" : "tableheader")" style="width:100%;font-size:15px;" cellpadding="2" cellspacing="2">
+                                    <tr>
+                                        <th>City ID</th>
+                                        <th>City Name</th>
+                                        <th>Actions </th>
+                                    </tr>
+                                    <tbody id="myTable">
+                                        @foreach (City cit in Model.City)
+                                        {
+                                            <tr>
+                                                <td>@cit.CityId</td>
+                                                <td>@cit.CityName</td>
+                                                <td>
+                                                    <a href="@Url.Action("UpdateCity", "Home",new { id = cit.CityId })" title="Edit">
+                                                        <img alt="Edit" style="width:20px;height:20px;" src="@Url.Content("~/images/update.png")">
+
+                                                    </a>
+                                                    &nbsp;&nbsp;
+                                                    <a href="@Url.Action("DeleteCity", "Home",new { id = cit.CityId })" title="Delete" onclick="return confirm('Are sure wants to delete?');">
+                                                        <img alt="Delete" style="width:22px;height:20px;" src="@Url.Content("~/images/delete.png")">
+
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="state">
+                            <div id="location">
+                                <table class="table @(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "sessiontableheader" : "tableheader")" style="width:100%;font-size:15px;" cellpadding="2" cellspacing="2">
+                                    <tr>
+                                        <th>State ID</th>
+                                        <th>State Name</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    <tbody id="myTable">
+                                        @foreach (State sta in Model.State)
+                                        {
+                                            <tr>
+                                                <td>@sta.StateId</td>
+                                                <td>@sta.Statename</td>
+                                                <td>
+                                                    <a href="@Url.Action("UpdateState", "Home",new { id = sta.StateId })" title="Edit">
+                                                        <img alt="Edit" style="width:20px;height:20px;" src="@Url.Content("~/images/update.png")">
+
+                                                    </a>
+                                                    &nbsp;&nbsp;
+                                                    <a href="@Url.Action("DeleteState", "Home",new { id = sta.StateId })" title="Delete" onclick="return confirm('Are sure wants to delete?');">
+                                                        <img alt="Delete" style="width:22px;height:20px;" src="@Url.Content("~/images/delete.png")">
+
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="country">
+                            <div id="location">
+                                <table class="table @(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "sessiontableheader" : "tableheader")" style="width:100%;font-size:15px;" cellpadding="2" cellspacing="2">
+                                    <tr>
+                                        <th>Country ID</th>
+                                        <th>Country Name</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    <tbody id="myTable">
+                                        @foreach (Country cou in Model.Country)
+                                        {
+                                            <tr>
+                                                <td width="40%">@cou.CountryId</td>
+                                                <td width="40%">@cou.CountryName</td>
+                                                <td width="20%">
+                                                    <a href="@Url.Action("UpdateCountry", "Home",new { id = cou.CountryId })" title="Edit">
+                                                        <img alt="Edit" style="width:20px;height:20px;" src="@Url.Content("~/images/update.png")">
+
+                                                    </a>
+                                                    &nbsp;&nbsp;
+                                                    <a href="@Url.Action("DeleteCountry", "Home",new { id = cou.CountryId })" title="Delete" onclick="return confirm('Are sure wants to delete?');">
+                                                        <img alt="Delete" style="width:22px;height:20px;" src="@Url.Content("~/images/delete.png")">
+
+                                                    </a>
+                                                    @*@Html.ActionLink("Edit", "UpdateCountry", new { id = cou.CountryId })|
+                                        @Html.ActionLink("Delete", "DeleteCountry", new { id = cou.CountryId }, new { onclick = "return confirm('Are sure wants to delete?');" })*@
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        @*<div style="width:100%;">
+                            <div style="width:40%;float:left;">&nbsp;</div>
+                            <div class="btn btn-block" style="width:20%;float:left;margin-bottom:20px;margin-top:40px;">
+                                @Html.ActionLink("ADD", "LocationDirect", "HomeController", new { @class = Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton" })
+                            </div>
+                            <div style="width:40%;float:left;">&nbsp;</div>
+                        </div>*@
+
+                    </div>
+
+                </div>
+                <div style="width:10%;float:left;"></div>
+                <div style="clear:both;"></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <script>
+            // Get the dropdown element
+            const dropdown = document.getElementById('branches');
+
+            // Add event listener for dropdown change
+            dropdown.addEventListener('change', function () {
+                // Get the selected option text
+                const selectedOptionText = dropdown.options[dropdown.selectedIndex].text;
+               
+                // Update the page title
+                document.getElementById("pageTitle").innerText = `${selectedOptionText}`;
+            });
+        </script>
+        <script>
+            function checkSelection() {
+
+                $("#state").hide();
+                $("#location").hide();
+                $("#city").hide();
+                $("#country").hide();
+
+                var selectedItem = $(this).val();
+
+                if (selectedItem == "1") {
+                    $("#location").show();
+                } else if (selectedItem == "2") {
+                    $("#city").show();
+                }
+                else if (selectedItem == "3") {
+                    $("#state").show();
+                }
+                else if (selectedItem == "4") {
+                    $("#country").show();
+                }
+            };
+
+            $(document).ready(function () {
+                $("#branches").change(checkSelection);
+                checkSelection.apply($("#branches"));
+            });
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

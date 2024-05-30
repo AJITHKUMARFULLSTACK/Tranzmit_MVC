@@ -1,0 +1,378 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Tranzmit_MVC\\TranzmitUI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|e:\\tranzmit_mvc\\tranzmitui\\tranzmitui\\models\\devicetransmission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\models\\devicetransmission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\models\\repositorymaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\models\\repositorymaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\content\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\content\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\locationinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\locationinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\updatestate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\updatestate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\deviceinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\deviceinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\repositoryupdate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\repositoryupdate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\groupupdate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\groupupdate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\schedulelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\schedulelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\groupinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\groupinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\transmissionlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\transmissionlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\scheduleinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\scheduleinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\scheduleupdate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\scheduleupdate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|E:\\Tranzmit_MVC\\TranzmitUI\\tranzmitui\\views\\home\\repositoryinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BA44FBF-27B1-49E7-87A6-89DDC9560DD5}|TranzmitUI\\TranzmitUI.csproj|solutionrelative:tranzmitui\\views\\home\\repositoryinsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 331,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "TranzmitUI\\Controllers\\HomeController.cs",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "TranzmitUI\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAMUAAAAAAAAAAAArwMwAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T08:59:27.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\_ViewStart.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\_ViewStart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-29T08:59:27.095Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "main.css",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Content\\main.css",
+              "RelativeDocumentMoniker": "TranzmitUI\\Content\\main.css",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Content\\main.css",
+              "RelativeToolTip": "TranzmitUI\\Content\\main.css",
+              "ViewState": "AQIAAEQBAAAAAAAAAAAAAF0BAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-29T08:59:27.304Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DashBoard.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\DashBoard.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\DashBoard.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\DashBoard.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\DashBoard.cshtml",
+              "ViewState": "AQIAAEEAAAAAAAAAAAD4v04AAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-29T08:59:27.391Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RepositoryMaster.cs",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Models\\RepositoryMaster.cs",
+              "RelativeDocumentMoniker": "TranzmitUI\\Models\\RepositoryMaster.cs",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Models\\RepositoryMaster.cs",
+              "RelativeToolTip": "TranzmitUI\\Models\\RepositoryMaster.cs",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAYwCoAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T08:59:55.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DeviceTransmission.cs",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Models\\DeviceTransmission.cs",
+              "RelativeDocumentMoniker": "TranzmitUI\\Models\\DeviceTransmission.cs",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Models\\DeviceTransmission.cs",
+              "RelativeToolTip": "TranzmitUI\\Models\\DeviceTransmission.cs",
+              "ViewState": "AQIAAIkAAAAAAAAAAAArwJUAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T08:59:27.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAMkAAAAAAAAAAAAAwNkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-29T08:59:27.106Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Global.asax.cs",
+              "RelativeDocumentMoniker": "TranzmitUI\\Global.asax.cs",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Global.asax.cs",
+              "RelativeToolTip": "TranzmitUI\\Global.asax.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001384|",
+              "WhenOpened": "2024-05-29T08:59:27.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LocationInsert.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\LocationInsert.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\LocationInsert.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\LocationInsert.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\LocationInsert.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\Login.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\Login.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\Login.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\Login.cshtml",
+              "ViewState": "AQIAADsAAAAAAAAAAIAwwEYAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Web.config",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Web.config",
+              "RelativeDocumentMoniker": "TranzmitUI\\Web.config",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Web.config",
+              "RelativeToolTip": "TranzmitUI\\Web.config",
+              "ViewState": "AQIAAIEAAAAAAAAAAAAAAJAAAADYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-05-29T08:59:27.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RepositoryUpdate.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\RepositoryUpdate.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\RepositoryUpdate.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\RepositoryUpdate.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\RepositoryUpdate.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAACBzwE8AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UpdateState.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\UpdateState.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\UpdateState.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\UpdateState.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\UpdateState.cshtml",
+              "ViewState": "AQIAAAoAAAAAAAAAAGBnwB0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.097Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "TranzmitUI\\App_Start\\RouteConfig.cs",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "TranzmitUI\\App_Start\\RouteConfig.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBMAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T08:59:27.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "GroupUpdate.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\GroupUpdate.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\GroupUpdate.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\GroupUpdate.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\GroupUpdate.cshtml",
+              "ViewState": "AQIAALUAAAAAAAAAAMiFwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DeviceInsert.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\DeviceInsert.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\DeviceInsert.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\DeviceInsert.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\DeviceInsert.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAIiBwAAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GroupInsert.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\GroupInsert.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\GroupInsert.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\GroupInsert.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\GroupInsert.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADkAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "TransmissionList.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\TransmissionList.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\TransmissionList.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\TransmissionList.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\TransmissionList.cshtml",
+              "ViewState": "AQIAABIAAAAAAAAAACBzwDwAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ScheduleUpdate.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\ScheduleUpdate.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\ScheduleUpdate.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\ScheduleUpdate.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\ScheduleUpdate.cshtml",
+              "ViewState": "AQIAAGkAAAAAAAAAAIiBwBsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.388Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ScheduleInsert.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\ScheduleInsert.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\ScheduleInsert.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\ScheduleInsert.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\ScheduleInsert.cshtml",
+              "ViewState": "AQIAABQAAAAAAAAAAHCIwF8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.39Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ScheduleList.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\ScheduleList.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\ScheduleList.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\ScheduleList.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\ScheduleList.cshtml",
+              "ViewState": "AQIAABYAAAAAAAAAAFB2wJAAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "RepositoryInsert.cshtml",
+              "DocumentMoniker": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\RepositoryInsert.cshtml",
+              "RelativeDocumentMoniker": "TranzmitUI\\Views\\Home\\RepositoryInsert.cshtml",
+              "ToolTip": "E:\\Tranzmit_MVC\\TranzmitUI\\TranzmitUI\\Views\\Home\\RepositoryInsert.cshtml",
+              "RelativeToolTip": "TranzmitUI\\Views\\Home\\RepositoryInsert.cshtml",
+              "ViewState": "AQIAAAIAAAAAAAAAADiNwEsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002242|",
+              "WhenOpened": "2024-05-29T08:59:27.395Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

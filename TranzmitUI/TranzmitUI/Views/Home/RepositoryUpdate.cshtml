@@ -1,0 +1,102 @@
+﻿@model TranzmitUI.Models.RepositoryMaster
+
+<html>
+<head>
+    <title>REPOSITORY</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="pageContainer">
+        <div class="insertPageTitle">UpdateRepository</div>
+
+
+    </div>
+    <hr />
+    @using (Html.BeginForm(Html.BeginForm("RepositoryUpdate", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="column" style="height:100%; width:100%;">
+                <table width="50%" align="center" cellpadding="5" cellspacing="10" style="border-collapse: separate; border-spacing: 0 1em; border-width: 5px; border-color: black; margin: 0 30%;">
+
+                    <tr>
+                        <td class="lblsec">Version</td>
+                        <td></td>
+                        <td>
+                            @Html.TextBoxFor(model => model.RepVersion, new { @class = "inputstyle" })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.RepVersion)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lblsec">Repositorypath</td>
+                        <td></td>
+                        <td>
+                            @Html.TextBoxFor(model => model.RepPath,
+                                new { @readonly = "true", @class = "bigsizetxt" })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.RepPath)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lblsec">@*@Html.LabelFor(model => model.CityId)*@Filename</td>
+                        <td></td>
+                        <td>
+                            @Html.TextBoxFor(model => model.RepName,
+                     new { @readonly = "true", @class = "bigsizetxt" })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.RepName)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="lblsec">@*@Html.LabelFor(model => model.CityId)*@Uploadfile</td>
+                        <td></td>
+                        <td>
+                            @Html.TextBoxFor(model => model.filesUpdate, "", new { @type = "file", @multiple = "multiple" })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.filesUpdate)
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td style="padding-top:100px;" valign="bottom">
+                            <div style="width:300px;">
+                                <button style="float:left;margin-right:5px" class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")">
+                                    Update
+                                </button>
+                                <a class="@(Session["UserOraganization"].ToString() == "KeralaStateCooperativeBank" ? "form-btn" : "scheduleButton")" href="/Home/RepositoryList">
+
+                                    Cancel
+
+                                </a>
+                            </div>
+
+
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    }
+    @if (TempData["testmsg"] != null)
+    {
+        @Html.Raw(TempData["testmsg"])
+    }
+    <script>
+        $(function () {
+            $(".multiselect").multiselect();
+        });
+    </script>
+</body>
+
+</html>
